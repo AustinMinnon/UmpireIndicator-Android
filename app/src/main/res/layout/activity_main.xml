@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Out"
+        android:text="Out 0"
         android:id="@+id/outText"
         android:textSize="45sp"
         android:textColor="@android:color/background_light"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Strike"
+        android:text="Strike 0"
         android:id="@+id/strikeText"
         android:textSize="45sp"
         android:textColor="@android:color/background_light"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Ball"
+        android:text="Ball 0"
         android:id="@+id/ballText"
         android:textSize="45sp"
         android:textColor="@android:color/background_light"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Inning"
+        android:text="Inning 1"
         android:id="@+id/inningText"
         android:textSize="45sp"
         android:textColor="@android:color/background_light"
@@ -142,6 +142,16 @@
         android:layout_above="@+id/inningText"
         android:layout_toLeftOf="@+id/minusOut"
         android:layout_toStartOf="@+id/minusOut" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coach View"
+        android:id="@+id/coachButton"
+        android:layout_above="@+id/newBatter"
+        android:layout_alignLeft="@+id/plusOut"
+        android:layout_alignStart="@+id/plusOut" />
 
 
 </RelativeLayout>
