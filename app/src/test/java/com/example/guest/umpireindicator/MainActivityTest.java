@@ -27,7 +27,7 @@ public class MainActivityTest {
     @Test
     public void validateTextViewContent() {
         TextView ballText = (TextView) activity.findViewById(R.id.ballText);
-        assertTrue("Ball".equals(ballText.getText().toString()));
+        assertTrue("Ball 0".equals(ballText.getText().toString()));
     }
     @Test
     public void secondActivityStarted() {
