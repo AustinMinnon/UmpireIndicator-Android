@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.guest.umpireindicator.MainActivity">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop"
+      />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Out"
+        android:id="@+id/outText"
+        android:textSize="45sp"
+        android:textColor="@android:color/background_light"
+        android:layout_alignBottom="@+id/plusOut"
+        android:layout_alignLeft="@+id/strikeText"
+        android:layout_alignStart="@+id/strikeText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Strike"
+        android:id="@+id/strikeText"
+        android:textSize="45sp"
+        android:textColor="@android:color/background_light"
+        android:layout_alignBottom="@+id/plusStrike"
+        android:layout_alignLeft="@+id/ballText"
+        android:layout_alignStart="@+id/ballText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ball"
+        android:id="@+id/ballText"
+        android:textSize="45sp"
+        android:textColor="@android:color/background_light"
+        android:layout_alignTop="@+id/plusBall"
+        android:layout_alignLeft="@+id/inningText"
+        android:layout_alignStart="@+id/inningText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Inning"
+        android:id="@+id/inningText"
+        android:textSize="45sp"
+        android:textColor="@android:color/background_light"
+        android:layout_above="@+id/newBatter"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Batter"
+        android:id="@+id/newBatter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="50dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/plusBall"
+        android:minHeight="30dp"
+        android:layout_alignTop="@+id/minusBall"
+        android:layout_alignLeft="@+id/plusStrike"
+        android:layout_alignStart="@+id/plusStrike" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/minusBall"
+        android:minHeight="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/plusOut"
+        android:layout_toEndOf="@+id/plusOut"
+        android:layout_marginTop="34dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/plusStrike"
+        android:minHeight="30dp"
+        android:layout_alignTop="@+id/minusStrike"
+        android:layout_alignLeft="@+id/plusOut"
+        android:layout_alignStart="@+id/plusOut" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/minusStrike"
+        android:minHeight="30dp"
+        android:layout_marginBottom="88dp"
+        android:layout_above="@+id/minusOut"
+        android:layout_toRightOf="@+id/plusOut"
+        android:layout_toEndOf="@+id/plusOut" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/minusOut"
+        android:minHeight="30dp"
+        android:layout_alignTop="@+id/plusOut"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/plusOut"
+        android:minHeight="30dp"
+        android:layout_marginRight="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="93dp"
+        android:layout_above="@+id/inningText"
+        android:layout_toLeftOf="@+id/minusOut"
+        android:layout_toStartOf="@+id/minusOut" />
+
+
+</RelativeLayout>
