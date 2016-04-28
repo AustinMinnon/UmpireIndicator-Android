@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/bg">
 
-     go<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,16 +19,43 @@
         <!--android:src="@drawable/bg"-->
         <!--android:scaleType="centerCrop"-->
         <!--/>-->
+         <TableRow>
+             <Button
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:text="New Batter"
+                 android:id="@+id/newBatter"
+                 android:minHeight="50dp"
+                 android:layout_column="0"/>
+
+             <Button
+                 style="?android:attr/buttonStyleSmall"
+                 android:layout_width="50dp"
+                 android:layout_height="match_parent"
+                 android:text="Coach View"
+                 android:id="@+id/coachButton"
+                 android:layout_column="0"
+                 />
+             <Button
+                 style="?android:attr/buttonStyleSmall"
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:text="Weather"
+                 android:id="@+id/weatherButton"
+                 android:layout_column="0"
+                 />
+         </TableRow>
 
         <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Ball 0"
                 android:id="@+id/ballText"
-                android:textSize="45sp"
+                android:textSize="35sp"
                 android:textColor="@android:color/background_light"
                 android:layout_column="0"
                 />
@@ -36,22 +63,23 @@
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:text="+"
+                android:layout_marginLeft="25dp"
                 android:id="@+id/plusBall"
-                android:minHeight="30dp"
-                android:layout_column="0"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/button_bg_round"
+                android:background="@drawable/laces"
+                android:layout_column="1"
+
                 />
 
             <Button
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/button_bg_round"
+                android:background="@drawable/laces"
                 android:text="-"
                 android:id="@+id/minusBall"
                 android:minHeight="30dp"
-                android:layout_column="0"/>
+                android:layout_column="2"/>
 
 
         </TableRow>
@@ -60,35 +88,37 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Strike 0"
                 android:id="@+id/strikeText"
-                android:textSize="45sp"
+                android:textSize="35sp"
                 android:textColor="@android:color/background_light"
                 android:layout_column="0"
                 />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
+                android:layout_marginLeft="25dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/button_bg_round"
+                android:background="@drawable/laces"
                 android:text="+"
                 android:id="@+id/plusStrike"
                 android:minHeight="30dp"
-                android:layout_column="0"
+                android:layout_column="1"
                 />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/button_bg_round"
+                android:background="@drawable/laces"
                 android:text="-"
                 android:id="@+id/minusStrike"
                 android:minHeight="30dp"
-                android:layout_column="0"
+                android:layout_column="2"
                 />
 
         </TableRow>
@@ -97,33 +127,37 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Out 0"
                 android:id="@+id/outText"
-                android:textSize="45sp"
+                android:textSize="35sp"
                 android:textColor="@android:color/background_light"
                 android:layout_column="0"
                 />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="+"
+                android:layout_marginLeft="25dp"
                 android:id="@+id/plusOut"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/laces"
                 android:minHeight="30dp"
-                android:layout_column="0"
+                android:layout_column="1"
                 />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/laces"
                 android:text="-"
                 android:id="@+id/minusOut"
                 android:minHeight="30dp"
-                android:layout_column="0"
+                android:layout_column="2"
                 />
 
         </TableRow>
@@ -132,31 +166,39 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Inning 1"
+                android:text="Inning  1"
                 android:id="@+id/inningText"
-                android:textSize="45sp"
+                android:textSize="35sp"
                 android:textColor="@android:color/background_light"
                 android:layout_column="0"/>
 
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:text="+"
+                android:layout_marginLeft="25dp"
+                android:id="@+id/plusInning"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/laces"
+                android:minHeight="30dp"
+                android:layout_column="1"
+                />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/laces"
+                android:text="-"
+                android:id="@+id/minusInning"
+                android:minHeight="30dp"
+                android:layout_column="2"
+                />
 
         </TableRow>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Batter"
-            android:id="@+id/newBatter"
-            android:minHeight="50dp" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Coach View"
-            android:id="@+id/coachButton"
-            />
-
 
     </TableLayout>
 

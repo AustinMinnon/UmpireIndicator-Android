@@ -24,12 +24,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.minusStrike) Button mMinusStrike;
     @Bind(R.id.plusOut) Button mPlusOut;
     @Bind(R.id.minusOut) Button mMinusOut;
+    @Bind(R.id.plusInning) Button mPlusInning;
+    @Bind(R.id.minusInning) Button mMinusInning;
     @Bind(R.id.coachButton) Button mCoachButton;
     @Bind(R.id.newBatter) Button mNewBatter;
     int ballCount=0;
     int strikeCount=0;
     int outCount=0;
     int inningCount=1;
+    int inningTBCount=1;
 
     public void setCount(TextView balls, String type, int number ){
         balls.setText(type + number);
@@ -42,6 +45,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setCount(mBallText, "Ball ", ballCount);
         setCount(mStrikeText, "Strike ", strikeCount);
         setCount(mOutText, "Out ", outCount);
+    }
+
+    public boolean checkInning(int inningCount){
+        if (inningCount %2 ==0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void setCounts(){
@@ -68,9 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ballCount=0;
             strikeCount=0;
             setCount(mBallText, "Ball ", ballCount);
-        }
-
-        else if (strikeCount >=3){
+        } else if (strikeCount >=3){
             strikeCount=0;
             ballCount=0;
             outCount++;
@@ -101,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMinusStrike.setOnClickListener(this);
         mPlusOut.setOnClickListener(this);
         mMinusOut.setOnClickListener(this);
+        mPlusInning.setOnClickListener(this);
+        mMinusInning.setOnClickListener(this);
     }
         @Override
         public void onClick(View v){
@@ -135,8 +146,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             break;
             case R.id.minusStrike:
-                strikeCount-=1;
-                setCount(mStrikeText, "Strike ", strikeCount);
+                if (strikeCount ==0){
+                }else {
+                    strikeCount-=1;
+                    setCount(mStrikeText, "Strike ", strikeCount);
+                }
             break;
             case R.id.plusOut:
                 outCount+=1;
@@ -152,7 +166,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.newBatter:
                 resetCount(mBallText, mOutText, mStrikeText);
             break;
+            case R.id.plusInning:
+                inningTBCount++;
+                if (!checkInning(inningTBCount)){
+                    inningCount++;
+                    inningTBCount++;
+                    setCount(mInningText, "Inning ", inningCount);
+                    if(!checkInning(inningTBCount)){
+                        setCount(mInningText, "Inning ↓", inningCount);
+                    }else if (checkInning(inningTBCount)){
+                        if (checkInning(inningTBCount)){
+
+                        }
+                        Toast.makeText(MainActivity.this, "toast", Toast.LENGTH_SHORT).show();
+                        setCount(mInningText, "Inning ", inningCount);
+
+                    }
+                }else if(checkInning(inningTBCount)){
+                    setCount(mInningText, "Inning ↓", inningCount);
+                }
+                break;
+            case R.id.minusInning:
+                break;
             default:
+                break;
 
         }
     }

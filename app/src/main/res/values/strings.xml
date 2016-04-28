@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UmpireIndicator</string>
+    <string name="downarrow">&#x21e3;</string>
+    <string name="uparrow">&#x21e1;</string>
 </resources>
