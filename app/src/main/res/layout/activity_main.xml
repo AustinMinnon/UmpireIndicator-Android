@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/bg">
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     go<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,18 +35,19 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="+"
                 android:id="@+id/plusBall"
                 android:minHeight="30dp"
                 android:layout_column="0"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_bg_round"
                 />
 
             <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_bg_round"
                 android:text="-"
                 android:id="@+id/minusBall"
                 android:minHeight="30dp"
@@ -70,8 +71,9 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_bg_round"
                 android:text="+"
                 android:id="@+id/plusStrike"
                 android:minHeight="30dp"
@@ -80,8 +82,9 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_bg_round"
                 android:text="-"
                 android:id="@+id/minusStrike"
                 android:minHeight="30dp"
@@ -135,8 +138,7 @@
                 android:id="@+id/inningText"
                 android:textSize="45sp"
                 android:textColor="@android:color/background_light"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp" />
+                android:layout_column="0"/>
 
 
         </TableRow>
