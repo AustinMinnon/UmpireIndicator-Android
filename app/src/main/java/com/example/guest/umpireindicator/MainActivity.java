@@ -71,9 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         else if (strikeCount >=3){
-            strikeCount-=3;
-            setCount(mStrikeText, "Strike ", strikeCount);
+            strikeCount=0;
+            ballCount=0;
             outCount++;
+            setCounts();
             if (outCount>=3) {
                 ballCount = 0;
                 strikeCount = 0;
