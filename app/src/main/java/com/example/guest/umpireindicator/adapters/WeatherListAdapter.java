@@ -1,6 +1,7 @@
 package com.example.guest.umpireindicator.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.guest.umpireindicator.R;
 import com.example.guest.umpireindicator.models.Weather;
+import com.example.guest.umpireindicator.ui.WeatherDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -51,13 +55,24 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
 
         public WeatherViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int itemPosition = getLayoutPosition();
+                    Intent intent = new Intent(mContext, WeatherDetailActivity.class);
+                    intent.putExtra("position", itemPosition + "");
+                    intent.putExtra("weathers", Parcels.wrap(mWeathers));
+                    mContext.startActivity(intent);
+                }
+           });
         }
 
-        public void bindWeather(Weather weather){
+        public void bindWeather(Weather weather) {
             mNameTextView.setText(weather.getMinTemp());
             mCategoryTextView.setText(weather.getMaxTemp());
         }
     }
+
 }

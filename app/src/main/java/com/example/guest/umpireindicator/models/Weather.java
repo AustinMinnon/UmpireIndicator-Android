@@ -1,5 +1,8 @@
 package com.example.guest.umpireindicator.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Weather {
     private String mTempMax;
     private String mTempMin;
@@ -22,6 +25,10 @@ public class Weather {
 
     public String getDate() {
         return mDate;
+    }
+
+    public Weather() {
+
     }
 
 }
