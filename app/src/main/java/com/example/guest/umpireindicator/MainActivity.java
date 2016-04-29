@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.plusInning) Button mPlusInning;
     @Bind(R.id.minusInning) Button mMinusInning;
     @Bind(R.id.coachButton) Button mCoachButton;
+    @Bind(R.id.weatherButton) Button mWeatherButton;
     @Bind(R.id.newBatter) Button mNewBatter;
     int ballCount=0;
     int strikeCount=0;
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ballCount=0;
             outCount++;
             setCounts();
+
             if (outCount>=3) {
                 ballCount = 0;
                 strikeCount = 0;
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     }else if (upDown==2){
                         setCount(mInningText, "Inning ↓", inningCount);
-                    }
+                }
                 setCounts();
             }
         }
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mWeatherButton.setOnClickListener(this);
         mCoachButton.setOnClickListener(this);
         mNewBatter.setOnClickListener(this);
         mPlusBall.setOnClickListener(this);
@@ -141,6 +144,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.coachButton:
                 Intent intent = new Intent(MainActivity.this, CoachActivity.class);
                 startActivity(intent);
+            break;
+            case R.id.weatherButton:
+                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(weatherIntent);
             break;
             case R.id.plusBall:
                 if (ballCount <=3){
@@ -219,10 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         setCount(mInningText, "Inning ↓", inningCount);
                     }
                 }
-
-
                 inningTBCount-=1;
-
                 break;
             default:
                 break;

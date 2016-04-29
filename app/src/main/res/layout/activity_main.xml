@@ -19,34 +19,8 @@
         <!--android:src="@drawable/bg"-->
         <!--android:scaleType="centerCrop"-->
         <!--/>-->
-         <TableRow>
-             <Button
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:text="New Batter"
-                 android:id="@+id/newBatter"
-                 android:minHeight="50dp"
-                 android:layout_column="0"/>
 
-             <Button
-                 style="?android:attr/buttonStyleSmall"
-                 android:layout_width="50dp"
-                 android:layout_height="match_parent"
-                 android:text="Coach View"
-                 android:id="@+id/coachButton"
-                 android:layout_column="0"
-                 />
-             <Button
-                 style="?android:attr/buttonStyleSmall"
-                 android:layout_width="match_parent"
-                 android:layout_height="50dp"
-                 android:text="Weather"
-                 android:id="@+id/weatherButton"
-                 android:layout_column="0"
-                 />
-         </TableRow>
-
-        <TableRow>
+         <TableRow android:dividerPadding="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -200,7 +174,34 @@
 
         </TableRow>
 
-    </TableLayout>
+         <TableRow>
+             <Button
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:text="New Batter"
+                 android:id="@+id/newBatter"
+                 android:minHeight="50dp"
+                 android:layout_column="0"/>
+
+             <Button
+                 style="?android:attr/buttonStyleSmall"
+                 android:layout_width="50dp"
+                 android:layout_height="match_parent"
+                 android:text="Coach View"
+                 android:id="@+id/coachButton"
+                 android:layout_column="0"
+                 />
+             <Button
+                 style="?android:attr/buttonStyleSmall"
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:text="Weather"
+                 android:id="@+id/weatherButton"
+                 android:layout_column="0"
+                 />
+         </TableRow>
+
+     </TableLayout>
 
 </LinearLayout>
 
