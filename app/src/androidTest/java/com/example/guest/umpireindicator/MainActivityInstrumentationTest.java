@@ -2,6 +2,8 @@ package com.example.guest.umpireindicator;
 
 import android.support.test.rule.ActivityTestRule;
 
+import com.example.guest.umpireindicator.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 import static android.support.test.espresso.Espresso.onView;
