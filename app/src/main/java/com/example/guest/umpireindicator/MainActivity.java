@@ -33,33 +33,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int outCount=0;
     int inningCount=1;
     int inningTBCount=1;
+    int upDown =0;
 
     public void setCount(TextView balls, String type, int number ){
         balls.setText(type + number);
     }
 
-    public void resetCount(TextView mBallText, TextView mOutText, TextView mStrikeText){
-        ballCount=0;
-        strikeCount=0;
-        outCount=0;
+    public void resetCount(TextView mBallText, TextView mOutText, TextView mStrikeText) {
+        ballCount = 0;
+        strikeCount = 0;
+        outCount = 0;
         setCount(mBallText, "Ball ", ballCount);
         setCount(mStrikeText, "Strike ", strikeCount);
         setCount(mOutText, "Out ", outCount);
     }
 
-    public boolean checkInning(int inningCount){
-        if (inningCount %2 ==0){
-            return true;
-        }else{
-            return false;
+    public int checkInning(int inningTBCount){
+        if (inningTBCount %2 ==1){
+            upDown=1;
+        }else if (inningTBCount %2==0){
+            upDown=2;
+        }else if (inningTBCount %3==0){
+            upDown=3;
         }
+        return upDown;
+
     }
 
     public void setCounts(){
         setCount(mBallText, "Ball ", ballCount);
         setCount(mStrikeText, "Strike ", strikeCount);
         setCount(mOutText, "Out ", outCount);
-        setCount(mInningText, "Inning ", inningCount);
     }
 
     public void checkCounts(){
@@ -67,13 +71,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ballCount = 0;
             strikeCount = 0;
             outCount=0;
-            inningCount++;
+            inningTBCount++;
+            checkInning(inningTBCount);
+
             setCounts();
         } else if (outCount >=3){
             outCount=0;
             strikeCount=0;
             ballCount=0;
-            inningCount+=1;
+            inningTBCount++;
+            checkInning(inningTBCount);
+                if (upDown==1){
+                    inningCount++;
+                    setCount(mInningText, "Inning ↑", inningCount);
+
+                }else if (upDown==2){
+                    setCount(mInningText, "Inning ↓", inningCount);
+                }
             setCounts();
         } else if (ballCount >=4){
             ballCount=0;
@@ -88,7 +102,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ballCount = 0;
                 strikeCount = 0;
                 outCount=0;
-                inningCount++;
+                inningTBCount++;
+                checkInning(inningTBCount);
+                    if (upDown==1){
+                        inningCount++;
+                        setCount(mInningText, "Inning ↑", inningCount);
+
+                    }else if (upDown==2){
+                        setCount(mInningText, "Inning ↓", inningCount);
+                    }
                 setCounts();
             }
         }
@@ -147,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
             case R.id.minusStrike:
                 if (strikeCount ==0){
-                }else {
+                }else if (strikeCount >0){
                     strikeCount-=1;
                     setCount(mStrikeText, "Strike ", strikeCount);
                 }
@@ -160,33 +182,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setCounts();
             break;
             case R.id.minusOut:
-                outCount-=1;
-                setCount(mOutText, "Out ", outCount);
+                if (outCount ==0){
+                }else if (outCount >0){
+                    outCount-=1;
+                    setCount(mOutText, "Out ", outCount);
+                }
             break;
             case R.id.newBatter:
                 resetCount(mBallText, mOutText, mStrikeText);
             break;
             case R.id.plusInning:
                 inningTBCount++;
-                if (!checkInning(inningTBCount)){
+                checkInning(inningTBCount);
+                if (upDown==1){
                     inningCount++;
-                    inningTBCount++;
-                    setCount(mInningText, "Inning ", inningCount);
-                    if(!checkInning(inningTBCount)){
-                        setCount(mInningText, "Inning ↓", inningCount);
-                    }else if (checkInning(inningTBCount)){
-                        if (checkInning(inningTBCount)){
+                    setCount(mInningText, "Inning ↑", inningCount);
 
-                        }
-                        Toast.makeText(MainActivity.this, "toast", Toast.LENGTH_SHORT).show();
-                        setCount(mInningText, "Inning ", inningCount);
-
-                    }
-                }else if(checkInning(inningTBCount)){
+                }else if (upDown==2){
                     setCount(mInningText, "Inning ↓", inningCount);
                 }
                 break;
             case R.id.minusInning:
+                if (inningCount >=1){
+                    inningTBCount-=1;
+                    setCounts();
+                    checkInning(inningTBCount);
+                    if (upDown==2){
+                        inningTBCount++;
+                        inningCount-=1;
+                        setCount(mInningText, "Inning ↓", inningCount);
+                    }else if (upDown==1){
+                        inningTBCount++;
+                        setCount(mInningText, "Inning ↑", inningCount);
+                    }else if (upDown==3){
+                        inningTBCount-=1;
+                        setCount(mInningText, "Inning ↓", inningCount);
+                    }
+                }
+
+
+                inningTBCount-=1;
+
                 break;
             default:
                 break;

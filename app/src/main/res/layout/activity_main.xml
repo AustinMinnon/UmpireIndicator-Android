@@ -169,7 +169,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Inning  1"
+                android:text="Inning ↑1"
                 android:id="@+id/inningText"
                 android:textSize="35sp"
                 android:textColor="@android:color/background_light"
