@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.guest.umpireindicator.R;
 
+import org.w3c.dom.Text;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.strikeText) TextView mStrikeText;
     @Bind(R.id.outText) TextView mOutText;
     @Bind(R.id.inningText) TextView mInningText;
+    @Bind(R.id.homeText) TextView mHomeText;
+    @Bind(R.id.awayText) TextView mAwayText;
     @Bind(R.id.plusBall) Button mPlusBall;
     @Bind(R.id.minusBall) Button mMinusBall;
     @Bind(R.id.plusStrike) Button mPlusStrike;
@@ -27,12 +31,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.minusOut) Button mMinusOut;
     @Bind(R.id.plusInning) Button mPlusInning;
     @Bind(R.id.minusInning) Button mMinusInning;
+    @Bind(R.id.plusAway) Button mPlusAway;
+    @Bind(R.id.minusAway) Button mMinusAway;
+    @Bind(R.id.plusHome) Button mPlusHome;
+    @Bind(R.id.minusHome) Button mMinusHome;
     @Bind(R.id.coachButton) Button mCoachButton;
     @Bind(R.id.weatherButton) Button mWeatherButton;
     @Bind(R.id.newBatter) Button mNewBatter;
     int ballCount=0;
     int strikeCount=0;
     int outCount=0;
+    int homeCount=0;
+    int awayCount=0;
     int inningCount=1;
     int inningTBCount=1;
     int upDown =0;
@@ -138,6 +148,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMinusOut.setOnClickListener(this);
         mPlusInning.setOnClickListener(this);
         mMinusInning.setOnClickListener(this);
+        mPlusHome.setOnClickListener(this);
+        mMinusHome.setOnClickListener(this);
+        mPlusAway.setOnClickListener(this);
+        mMinusAway.setOnClickListener(this);
     }
         @Override
         public void onClick(View v){
@@ -228,6 +242,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 inningTBCount-=1;
+                break;
+            case R.id.plusHome:
+                    homeCount++;
+                    setCount(mHomeText, "Home ", homeCount);
+                    setCounts();
+                break;
+            case R.id.minusHome:
+                if (homeCount ==0){
+                }else {
+                    homeCount-=1;
+                    setCount(mHomeText, "Home ", homeCount);
+                }
+                break;
+            case R.id.plusAway:
+                awayCount++;
+                setCount(mAwayText, "Away ", awayCount);
+                break;
+            case R.id.minusAway:
+                if (awayCount ==0){
+                }else {
+                    awayCount-=1;
+                    setCount(mAwayText, "Away ", awayCount);
+                }
                 break;
             default:
                 break;
