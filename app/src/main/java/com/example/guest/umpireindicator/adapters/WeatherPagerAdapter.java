@@ -29,6 +29,6 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mWeathers.get(position).getDate();
+        return mWeathers.get(position).getDay();
     }
 }

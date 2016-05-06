@@ -72,6 +72,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         public void bindWeather(Weather weather) {
             mNameTextView.setText(weather.getMinTemp());
             mCategoryTextView.setText(weather.getMaxTemp());
+            mRatingTextView.setText(weather.getDay());
         }
     }
 

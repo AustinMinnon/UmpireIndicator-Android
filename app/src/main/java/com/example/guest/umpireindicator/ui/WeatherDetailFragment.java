@@ -50,7 +50,7 @@ public class WeatherDetailFragment extends Fragment {
 
         mNameLabel.setText(mWeather.getMaxTemp());
         mPhoneLabel.setText(mWeather.getMinTemp());
-        mAddressLabel.setText(mWeather.getDate());
+        mAddressLabel.setText(mWeather.getDay());
         return view;
     }
 }

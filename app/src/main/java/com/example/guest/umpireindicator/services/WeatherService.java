@@ -21,9 +21,28 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class WeatherService {
-    public static final String TAG = MainActivity.class.getSimpleName();
+public class WeatherService {    public static void fetchWeather(String location, Callback callback){
+    String apiKey = Constants.apiKey;
+    String baseUrl = Constants.baseUrl;
 
+    OkHttpClient client = new OkHttpClient.Builder()
+            .build();
+
+    HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.baseUrl).newBuilder();
+    urlBuilder.addQueryParameter(Constants.locationParam, location);
+    urlBuilder.addQueryParameter("appid", Constants.apiKey);
+    String url = urlBuilder.build().toString();
+    Log.d(TAG, url);
+
+    Request request = new Request.Builder()
+            .url(url)
+            .build();
+
+    Call call = client.newCall(request);
+    call.enqueue(callback);
+}
+
+    public static final String TAG = MainActivity.class.getSimpleName();
     public ArrayList<Weather> processResults(Response response){
         ArrayList<Weather> weathers = new ArrayList<>();
 
@@ -32,18 +51,22 @@ public class WeatherService {
         if (response.isSuccessful()){
             JSONObject weatherJSON = new JSONObject(jsonData);
             JSONArray listJSON = weatherJSON.getJSONArray("list");
-
+            String[] days = new String[]{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
             for (int i = 0; i<listJSON.length(); i++){
                 JSONObject dayJSON = listJSON.getJSONObject(i);
+//  city, country, avgTemp, main, description
+                String city = weatherJSON.getJSONObject("city").getString("name");
+                Log.d("city", city);
+                String country = weatherJSON.getJSONObject("city").getString("country");
+                String day = days[i];
+                String avgTemp = dayJSON.getJSONObject("temp").getString("day");
                 String maxTemp = dayJSON.getJSONObject("temp").getString("max");
                 String minTemp = dayJSON.getJSONObject("temp").getString("min");
-                long dateJSON = (dayJSON.getLong("dt") * 1000);
+                String main = dayJSON.getJSONArray("weather").getJSONObject(0).getString("main");
+                String description = dayJSON.getJSONArray("weather").getJSONObject(0).getString("description");
 
-                String date;
-                SimpleDateFormat df = new SimpleDateFormat("EEEE");
-                date = df.format(dateJSON);
-
-                Weather weather = new Weather(maxTemp, minTemp);
+                Weather weather = new Weather(city, country, day, avgTemp, maxTemp, minTemp,description, main);
+                Log.d("obj", weather.toString());
                         weathers.add(weather);
             }
 
@@ -54,28 +77,5 @@ public class WeatherService {
         e.printStackTrace();
     }
         return weathers;
-    }
-
-    public static void fetchWeather(String location, Callback callback){
-        String apiKey = Constants.apiKey;
-        String baseUrl = Constants.baseUrl;
-
-        OkHttpClient client = new OkHttpClient.Builder()
-                .build();
-
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.baseUrl).newBuilder();
-        urlBuilder.addQueryParameter(Constants.locationParam, location);
-//        Plus US?
-        urlBuilder.addQueryParameter(Constants.dayParam, "5");
-        urlBuilder.addQueryParameter("appid", Constants.apiKey);
-        String url = urlBuilder.build().toString();
-        Log.d(TAG, url);
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Call call = client.newCall(request);
-        call.enqueue(callback);
     }
 }
