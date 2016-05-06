@@ -8,17 +8,15 @@ public class Weather {
     private String mCountry;
     private String mTempMax;
     private String mTempMin;
-    private String mTempAvg;
     private String mMain;
     private String mDescription;
     private String mDay;
 
-    public Weather(String city, String country, String tempMax, String tempMin, String tempAvg, String main, String description, String day){
+    public Weather(String city, String country, String tempMax, String tempMin, String main, String description, String day){
         this.mCity = city;
         this.mCountry = country;
         this.mTempMax = tempMax;
         this.mTempMin = tempMin;
-        this.mTempAvg = tempAvg;
         this.mMain = main;
         this.mDescription = description;
         this.mDay = day;
@@ -39,10 +37,6 @@ public class Weather {
 
     public String getMinTemp() {
         return mTempMin;
-    }
-
-    public String getAvgTemp() {
-        return mTempAvg;
     }
 
     public String getMain(){

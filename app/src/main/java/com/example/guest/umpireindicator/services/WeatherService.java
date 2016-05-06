@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -41,7 +42,6 @@ public class WeatherService {    public static void fetchWeather(String location
     Call call = client.newCall(request);
     call.enqueue(callback);
 }
-
     public static final String TAG = MainActivity.class.getSimpleName();
     public ArrayList<Weather> processResults(Response response){
         ArrayList<Weather> weathers = new ArrayList<>();
@@ -54,19 +54,14 @@ public class WeatherService {    public static void fetchWeather(String location
             String[] days = new String[]{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
             for (int i = 0; i<listJSON.length(); i++){
                 JSONObject dayJSON = listJSON.getJSONObject(i);
-//  city, country, avgTemp, main, description
                 String city = weatherJSON.getJSONObject("city").getString("name");
-                Log.d("city", city);
                 String country = weatherJSON.getJSONObject("city").getString("country");
                 String day = days[i];
-                String avgTemp = dayJSON.getJSONObject("temp").getString("day");
-                String maxTemp = dayJSON.getJSONObject("temp").getString("max");
-                String minTemp = dayJSON.getJSONObject("temp").getString("min");
+                String tempMax = dayJSON.getJSONObject("temp").getString("max");
+                String tempMin = dayJSON.getJSONObject("temp").getString("min");
                 String main = dayJSON.getJSONArray("weather").getJSONObject(0).getString("main");
                 String description = dayJSON.getJSONArray("weather").getJSONObject(0).getString("description");
-
-                Weather weather = new Weather(city, country, day, avgTemp, maxTemp, minTemp,description, main);
-                Log.d("obj", weather.toString());
+                Weather weather = new Weather(city, country, tempMax, tempMin, main, description, day);
                         weathers.add(weather);
             }
 

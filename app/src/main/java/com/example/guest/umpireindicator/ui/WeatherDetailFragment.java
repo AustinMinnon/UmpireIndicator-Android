@@ -18,14 +18,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class WeatherDetailFragment extends Fragment {
-    @Bind(R.id.restaurantImageView) ImageView mImageLabel;
-    @Bind(R.id.restaurantNameTextView) TextView mNameLabel;
-    @Bind(R.id.cuisineTextView) TextView mCategoriesLabel;
-    @Bind(R.id.ratingTextView) TextView mRatingLabel;
-    @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
-    @Bind(R.id.phoneTextView) TextView mPhoneLabel;
-    @Bind(R.id.addressTextView) TextView mAddressLabel;
-    @Bind(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
+    @Bind(R.id.weatherImageView) ImageView mWeatherImageView;
+    @Bind(R.id.lowTextView) TextView mLowTextView;
+    @Bind(R.id.highTextView) TextView mHighTextView;
+    @Bind(R.id.dayTextView) TextView mDayTextView;
+    @Bind(R.id.mainTextView) TextView mMainTextView;
+    @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;
+    @Bind(R.id.locationTextView) TextView mLocationTextView;
 
     private Weather mWeather;
 
@@ -48,9 +47,12 @@ public class WeatherDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_weather_detail, container, false);
         ButterKnife.bind(this, view);
 
-        mNameLabel.setText(mWeather.getMaxTemp());
-        mPhoneLabel.setText(mWeather.getMinTemp());
-        mAddressLabel.setText(mWeather.getDay());
+        mLocationTextView.setText(mWeather.getCity());
+        mLowTextView.setText("Low: "+mWeather.getMinTemp()+"ºF");
+        mHighTextView.setText("High: "+mWeather.getMaxTemp()+"ºF");
+        mDayTextView.setText(mWeather.getDay());
+        mDescriptionTextView.setText(mWeather.getDescription());
+        mMainTextView.setText(mWeather.getMain());
         return view;
     }
 }

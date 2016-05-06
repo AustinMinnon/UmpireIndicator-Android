@@ -3,18 +3,22 @@ package com.example.guest.umpireindicator.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.guest.umpireindicator.R;
 import com.example.guest.umpireindicator.models.Weather;
 import com.example.guest.umpireindicator.ui.WeatherDetailActivity;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -47,10 +51,13 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
     }
 
     public class WeatherViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.restaurantImageView) ImageView mRestaurantImageView;
-        @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
-        @Bind(R.id.categoryTextView) TextView mCategoryTextView;
-        @Bind(R.id.ratingTextView) TextView mRatingTextView;
+        @Bind(R.id.weatherImageView) ImageView mWeatherImageView;
+        @Bind(R.id.lowTextView) TextView mLowTextView;
+        @Bind(R.id.highTextView) TextView mHighTextView;
+        @Bind(R.id.dayTextView) TextView mDayTextView;
+        @Bind(R.id.mainTextView) TextView mMainTextView;
+        @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;
+        @Bind(R.id.locationTextView) TextView mLocationTextView;
         private Context mContext;
 
         public WeatherViewHolder(View itemView) {
@@ -70,10 +77,12 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         }
 
         public void bindWeather(Weather weather) {
-            mNameTextView.setText(weather.getMinTemp());
-            mCategoryTextView.setText(weather.getMaxTemp());
-            mRatingTextView.setText(weather.getDay());
+            mLocationTextView.setText(weather.getCity());
+            mLowTextView.setText("Low: "+weather.getMinTemp()+"ºF");
+            mHighTextView.setText("High: "+weather.getMaxTemp()+"ºF");
+            mDayTextView.setText(weather.getDay());
+            mDescriptionTextView.setText(weather.getDescription());
+            mMainTextView.setText(weather.getMain());
         }
     }
-
 }
