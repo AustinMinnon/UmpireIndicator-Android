@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.WeatherActivity">
+    tools:context=".ui.WeatherActivity"
+    android:background="#000000">
 
     <ImageView
         android:layout_width="match_parent"
@@ -16,15 +17,6 @@
         android:layout_height="wrap_content"
         android:text="Check Weather"
         android:id="@+id/weatherButton"
-        android:layout_below="@+id/locationEditText"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/locationEditText"
-        android:hint="City, State, Country"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>

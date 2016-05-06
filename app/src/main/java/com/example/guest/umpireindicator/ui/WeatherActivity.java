@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,10 +20,9 @@ import butterknife.ButterKnife;
 
 public class WeatherActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = WeatherActivity.class.getSimpleName();
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
 
-    @Bind(R.id.locationEditText) EditText mLocationEditText;
     @Bind(R.id.weatherButton) Button mWeatherButton;
 
     @Override
@@ -29,27 +31,26 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_weather);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
-
         mWeatherButton.setOnClickListener(this);
-        Intent weatherIntent = getIntent();
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mWeatherButton) {
-            String location = mLocationEditText.getText().toString();
-            if (!(location).equals("")){
-                addToSharedPreferences(location);
-            }
             Intent intent = new Intent(WeatherActivity.this, WeatherListActivity.class);
             startActivity(intent);
         }
     }
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.preferencesLocation, location).apply();
-    }
-
 }
