@@ -1,11 +1,15 @@
 package com.example.guest.umpireindicator.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.example.guest.umpireindicator.Constants;
 import com.example.guest.umpireindicator.R;
 import com.example.guest.umpireindicator.adapters.WeatherListAdapter;
 import com.example.guest.umpireindicator.models.Weather;
@@ -21,6 +25,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class WeatherListActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentLocation;
     public ArrayList<Weather> mWeathers = new ArrayList<>();
     public static final String TAG = WeatherListActivity.class.getSimpleName();
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -33,8 +39,11 @@ public class WeatherListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String location = intent.getStringExtra("location");
-        fetchWeather(location);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentLocation = mSharedPreferences.getString(Constants.preferencesLocation, null);
+        if (mRecentLocation != null) {
+            fetchWeather(mRecentLocation);
+        }
     }
 
     private void fetchWeather(String location){
