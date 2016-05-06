@@ -2,7 +2,6 @@
 
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/bg">
 
@@ -157,10 +156,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
-                android:minHeight="30dp"
-                android:layout_column="1"
-                />
-
+                android:minHeight="10dp"
+                android:layout_column="1" />
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="100dp"
@@ -169,8 +166,7 @@
                 android:text="-"
                 android:id="@+id/minusInning"
                 android:minHeight="30dp"
-                android:layout_column="2"
-                />
+                android:layout_column="2" />
 
         </TableRow>
 
@@ -182,25 +178,21 @@
                  android:id="@+id/newBatter"
                  android:minHeight="50dp"
                  android:layout_column="0"/>
-
              <Button
                  style="?android:attr/buttonStyleSmall"
                  android:layout_width="50dp"
                  android:layout_height="match_parent"
                  android:text="Coach View"
                  android:id="@+id/coachButton"
-                 android:layout_column="0"
-                 />
+                 android:layout_column="0" />
              <Button
                  style="?android:attr/buttonStyleSmall"
                  android:layout_width="match_parent"
                  android:layout_height="50dp"
                  android:text="Weather"
                  android:id="@+id/weatherButton"
-                 android:layout_column="0"
-                 />
+                 android:layout_column="0" />
          </TableRow>
-
      </TableLayout>
 
 </LinearLayout>
