@@ -28,7 +28,8 @@
                  android:layout_height="match_parent"
                  android:text="Coach View"
                  android:id="@+id/coachButton"
-                 android:layout_column="0" />
+                 android:layout_column="0"
+                 android:visibility="invisible"/>
              <Button
                  style="?android:attr/buttonStyleSmall"
                  android:layout_width="match_parent"
