@@ -6,13 +6,16 @@ import org.parceler.Parcel;
 public class Game {
     int homeTeamScore;
     int awayTeamScore;
+    private String timeStamp;
     private String pushId;
+
 
     public Game() {}
 
-    public Game(int awayTeamScore, int homeTeamScore){
+    public Game(int awayTeamScore, int homeTeamScore, String timeStamp){
         this.awayTeamScore = awayTeamScore;
         this.homeTeamScore = homeTeamScore;
+        this.timeStamp = timeStamp;
         this.pushId = pushId;
     }
     
@@ -21,6 +24,9 @@ public class Game {
     }
     public int getAwayTeamScore(){
         return awayTeamScore;
+    }
+    public String getTimeStamp(){
+        return timeStamp;
     }
     public String getPushId(){
         return pushId;

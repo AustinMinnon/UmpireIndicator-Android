@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,10 @@ import com.example.guest.umpireindicator.models.Game;
 import com.firebase.client.Firebase;
 
 import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,9 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.weatherButton) Button mWeatherButton;
     @Bind(R.id.newBatter) Button mNewBatter;
     @Bind(R.id.saveGameButton) Button mSaveGameButton;
+    @Bind(R.id.gameListButton) Button mGameListButton;
     //    @Bind(R.id.coachButton) Button mCoachButton;
     private SharedPreferences mSharedPreferences;
-
+    public String timeStamp;
     int ballCount=0;
     int strikeCount=0;
     int outCount=0;
@@ -154,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 //        mCoachButton.setOnClickListener(this);
+        mGameListButton.setOnClickListener(this);
         mSaveGameButton.setOnClickListener(this);
         mWeatherButton.setOnClickListener(this);
         mNewBatter.setOnClickListener(this);
@@ -200,6 +207,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         finish();
     }
+    public static String getCurrentTimeStamp(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentTimeStamp = dateFormat.format(new Date());
+            return currentTimeStamp;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
         @Override
         public void onClick(View v){
@@ -207,8 +224,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            case R.id.coachButton:
 //                Intent intent = new Intent(MainActivity.this, CoachActivity.class);
 //                startActivity(intent);
+
             case R.id.saveGameButton:
-                Game mGame = new Game(homeCount, awayCount);
+                timeStamp=getCurrentTimeStamp();
+                Game mGame = new Game(homeCount, awayCount, timeStamp);
 
                 String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
                 Firebase userGameFirebaseRef = new Firebase(Constants.FIREBASE_URL_GAMES).child(userUid);
@@ -216,11 +235,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String gamePushId = pushRef.getKey();
                 mGame.setPushId(gamePushId);
                 pushRef.setValue(mGame);
-                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.gameListButton:
+                Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);
+                startActivity(listIntent);
             case R.id.weatherButton:
-                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
-                startActivity(weatherIntent);
+
+
+                Log.d(TAG, "date" + getCurrentTimeStamp());
+
+//
+// Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
+//                startActivity(weatherIntent);
             break;
             case R.id.plusBall:
                 if (ballCount <=3){
