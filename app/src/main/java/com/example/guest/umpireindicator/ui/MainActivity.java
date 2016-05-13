@@ -1,6 +1,8 @@
 package com.example.guest.umpireindicator.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,9 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.guest.umpireindicator.Constants;
 import com.example.guest.umpireindicator.R;
+import com.example.guest.umpireindicator.models.Game;
 import com.firebase.client.Firebase;
 
 import org.w3c.dom.Text;
@@ -41,9 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.minusAway) Button mMinusAway;
     @Bind(R.id.plusHome) Button mPlusHome;
     @Bind(R.id.minusHome) Button mMinusHome;
-    @Bind(R.id.coachButton) Button mCoachButton;
     @Bind(R.id.weatherButton) Button mWeatherButton;
     @Bind(R.id.newBatter) Button mNewBatter;
+    @Bind(R.id.saveGameButton) Button mSaveGameButton;
+    //    @Bind(R.id.coachButton) Button mCoachButton;
+    private SharedPreferences mSharedPreferences;
+
     int ballCount=0;
     int strikeCount=0;
     int outCount=0;
@@ -143,10 +150,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
+//        mCoachButton.setOnClickListener(this);
+        mSaveGameButton.setOnClickListener(this);
         mWeatherButton.setOnClickListener(this);
-        mCoachButton.setOnClickListener(this);
         mNewBatter.setOnClickListener(this);
         mPlusBall.setOnClickListener(this);
         mMinusBall.setOnClickListener(this);
@@ -195,10 +204,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v){
         switch(v.getId()){
-            case R.id.coachButton:
-                Intent intent = new Intent(MainActivity.this, CoachActivity.class);
-                startActivity(intent);
-            break;
+//            case R.id.coachButton:
+//                Intent intent = new Intent(MainActivity.this, CoachActivity.class);
+//                startActivity(intent);
+            case R.id.saveGameButton:
+                Game mGame = new Game(homeCount, awayCount);
+
+                String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+                Firebase userGameFirebaseRef = new Firebase(Constants.FIREBASE_URL_GAMES).child(userUid);
+                Firebase pushRef = userGameFirebaseRef.push();
+                String gamePushId = pushRef.getKey();
+                mGame.setPushId(gamePushId);
+                pushRef.setValue(mGame);
+                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.weatherButton:
                 Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
                 startActivity(weatherIntent);
