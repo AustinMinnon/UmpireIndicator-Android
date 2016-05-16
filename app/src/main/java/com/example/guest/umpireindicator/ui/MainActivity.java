@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public static String getCurrentTimeStamp(){
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String currentTimeStamp = dateFormat.format(new Date());
             return currentTimeStamp;
         } catch (Exception e) {
@@ -227,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.saveGameButton:
                 timeStamp=getCurrentTimeStamp();
+
                 Game mGame = new Game(homeCount, awayCount, timeStamp);
 
                 String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
@@ -234,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Firebase pushRef = userGameFirebaseRef.push();
                 String gamePushId = pushRef.getKey();
                 mGame.setPushId(gamePushId);
-                pushRef.setValue(mGame);
+                userGameFirebaseRef.push().setValue(mGame);
                 Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.gameListButton:

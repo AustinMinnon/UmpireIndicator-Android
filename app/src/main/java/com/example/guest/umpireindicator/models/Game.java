@@ -6,8 +6,8 @@ import org.parceler.Parcel;
 public class Game {
     int homeTeamScore;
     int awayTeamScore;
-    private String timeStamp;
-    private String pushId;
+     String timeStamp;
+     String pushId;
 
 
     public Game() {}

@@ -4,13 +4,13 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Weather {
-    private String mCity;
-    private String mCountry;
-    private String mTempMax;
-    private String mTempMin;
-    private String mMain;
-    private String mDescription;
-    private String mDay;
+    String mCity;
+    String mCountry;
+    String mTempMax;
+    String mTempMin;
+    String mMain;
+    String mDescription;
+    String mDay;
 
     public Weather(String city, String country, String tempMax, String tempMin, String main, String description, String day){
         this.mCity = city;

@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Home Team : 1"
-        android:textSize="40sp"
+        android:text="Home 1"
+        android:textSize="25sp"
+        android:paddingTop="5dp"
         android:id="@+id/homeTeamScore"
-        android:layout_gravity="center_horizontal" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:marginTop="15dp"
-        android:text="Away Team : 1"
-        android:textSize="40sp"
+        android:paddingTop="5dp"
+        android:text="Away 1"
+        android:textSize="25sp"
         android:id="@+id/awayTeamScore"
-        android:layout_gravity="center_horizontal" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginEnd="35dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="10dp"
-        android:text="Game saved on: 2016-05-13 11:04:36"
+        android:text="saved on: 2016-05-13 11:04:36"
         android:textStyle="italic"
         android:textSize="15sp"
         android:id="@+id/timeStamp"
-        android:layout_gravity="center_horizontal" />
-</LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/homeTeamScore"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/dividor"
+        android:cropToPadding="false"
+        android:scaleType="fitStart"
+        android:layout_alignTop="@+id/timeStamp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
