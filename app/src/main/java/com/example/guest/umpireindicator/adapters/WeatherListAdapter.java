@@ -2,6 +2,10 @@ package com.example.guest.umpireindicator.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,7 +59,6 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         @Bind(R.id.lowTextView) TextView mLowTextView;
         @Bind(R.id.highTextView) TextView mHighTextView;
         @Bind(R.id.dayTextView) TextView mDayTextView;
-        @Bind(R.id.mainTextView) TextView mMainTextView;
         @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;
         @Bind(R.id.locationTextView) TextView mLocationTextView;
         private Context mContext;
@@ -82,7 +85,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
             mHighTextView.setText("High: "+weather.getMaxTemp()+"ºF");
             mDayTextView.setText(weather.getDay());
             mDescriptionTextView.setText(weather.getDescription());
-            mMainTextView.setText(weather.getMain());
+            mWeatherImageView.setImageResource(weather.getIconPicture());
         }
     }
 }

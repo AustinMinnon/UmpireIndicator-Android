@@ -60,11 +60,12 @@ public class WeatherService {    public static void fetchWeather(String location
                 String tempMax = dayJSON.getJSONObject("temp").getString("max");
                 String tempMin = dayJSON.getJSONObject("temp").getString("min");
                 String main = dayJSON.getJSONArray("weather").getJSONObject(0).getString("main");
+                String icon = dayJSON.getJSONArray("weather").getJSONObject(0).getString("icon");
+                Log.d(TAG, "" + icon);
                 String description = dayJSON.getJSONArray("weather").getJSONObject(0).getString("description");
-                Weather weather = new Weather(city, country, tempMax, tempMin, main, description, day);
+                Weather weather = new Weather(city, country, tempMax, tempMin, main, description, day, icon);
                         weathers.add(weather);
             }
-
         }
     } catch (IOException e) {
         e.printStackTrace();

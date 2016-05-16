@@ -242,13 +242,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);
                 startActivity(listIntent);
             case R.id.weatherButton:
-
-
-                Log.d(TAG, "date" + getCurrentTimeStamp());
-
-//
-// Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
-//                startActivity(weatherIntent);
+                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(weatherIntent);
             break;
             case R.id.plusBall:
                 if (ballCount <=3){

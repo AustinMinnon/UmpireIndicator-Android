@@ -104,7 +104,7 @@ public class WeatherListActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
             mWeathers = weatherService.processResults(response);
 
-                WeatherListActivity.this.runOnUiThread(new Runnable(){
+                        WeatherListActivity.this.runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
                         mAdapter = new WeatherListAdapter(getApplicationContext(), mWeathers);

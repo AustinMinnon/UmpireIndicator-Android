@@ -53,6 +53,7 @@ public class WeatherDetailFragment extends Fragment {
         mDayTextView.setText(mWeather.getDay());
         mDescriptionTextView.setText(mWeather.getDescription());
         mMainTextView.setText(mWeather.getMain());
+        mWeatherImageView.setImageResource(mWeather.getIconPicture());
         return view;
     }
 }

@@ -25,7 +25,7 @@ public class GamePagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position){
         return mGames.get(position).getTimeStamp();
     }
-g
+
     @Override
     public int getCount(){
         return mGames.size();

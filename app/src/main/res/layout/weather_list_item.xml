@@ -6,20 +6,22 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:background="#ffffff"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:weightSum="1">
 
+
+
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:id="@+id/weatherImageView"
-            android:src="@drawable/weather"
+            android:src="@drawable/rain"
             android:scaleType="fitXY"
             android:layout_weight="0.60"
-            android:layout_gravity="center_horizontal"
             android:cropToPadding="false" />
 
         <TextView
@@ -40,12 +42,24 @@
             android:text="Sunday" />
 
         <TextView
-            android:paddingTop="8dp"
-            android:layout_width="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clear"
-            android:id="@+id/mainTextView"
-            android:textSize="20sp" />
+            android:id="@+id/lowTextView"
+            android:text="Low Temp: 56ºF"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/highTextView"
+            android:text="High Temp: 72ºF"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:textStyle="bold" />
 
         <TextView
             android:paddingTop="5dp"
@@ -56,23 +70,6 @@
             android:textStyle="bold|italic"
             android:textSize="15dp" />
 
-        <TextView
-            android:paddingTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lowTextView"
-            android:text="Low Temp: 56ºF"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:paddingTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/highTextView"
-            android:text="High Temp: 72ºF"
-            android:textSize="17dp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
