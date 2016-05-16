@@ -43,7 +43,7 @@ public class GameDetailFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mAwayTeamTextView.setText("Away " + mGame.getAwayTeamScore());
-        mHomeTeamScore.setText("Home" + mGame.getHomeTeamScore());
+        mHomeTeamScore.setText("Home " + mGame.getHomeTeamScore());
         mTimeStamp.setText(mGame.getTimeStamp());
         return view;
     }

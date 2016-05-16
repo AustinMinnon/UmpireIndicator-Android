@@ -11,25 +11,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
-         <!--<TableRow-->
-             <!--android:id="@+id/tableRow1"-->
-             <!--android:layout_height="wrap_content"-->
-             <!--android:layout_gravity="center_horizontal"-->
-             <!--android:layout_width="wrap_content">-->
-             <!--<Button-->
-                 <!--android:id="@+id/button1"-->
-                 <!--android:layout_width="wrap_content"-->
-                 <!--android:layout_height="wrap_content"-->
-                 <!--android:layout_gravity="center_horizontal"-->
-                 <!--android:text="@string/stringtxt1"></Button>-->
-             <!--<Button-->
-                 <!--android:id="@+id/button2"-->
-                 <!--android:layout_width="wrap_content"-->
-                 <!--android:text="@string/stringtxt2"-->
-                 <!--android:layout_height="wrap_content"-->
-                 <!--android:layout_gravity="center|center_horizontal"></Button>-->
-         <!--</TableRow>-->
-
          <TableRow
              android:gravity="center_horizontal"
              android:layout_height="wrap_content"
@@ -47,7 +28,7 @@
                  style="?android:attr/buttonStyleSmall"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text="Save Game"
+                 android:text="Save Scores"
                  android:textSize="14sp"
                  android:id="@+id/saveGameButton"
                  android:layout_column="0"
@@ -97,6 +78,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="+"
+                 android:textColor="@color/colorPlus"
                  android:id="@+id/plusHome"
                  android:layout_column="1" />
 
@@ -105,6 +87,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="-"
+                 android:textColor="@color/colorMinus"
                  android:id="@+id/minusHome"
                  android:layout_column="1" />
 
@@ -133,6 +116,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="+"
+                 android:textColor="@color/colorPlus"
                  android:id="@+id/plusAway"
                  android:layout_column="1" />
 
@@ -141,6 +125,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="-"
+                 android:textColor="@color/colorMinus"
                  android:id="@+id/minusAway"
                  android:layout_column="1" />
 
@@ -158,26 +143,25 @@
                 android:id="@+id/ballText"
                 android:textSize="35sp"
                 android:textColor="@android:color/background_light"
-                android:layout_column="0"
-                />
+                android:layout_column="0" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:text="+"
+                android:textColor="@color/colorPlus"
                 android:layout_marginLeft="25dp"
                 android:id="@+id/plusBall"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
-                android:layout_column="1"
-
-                />
+                android:layout_column="1" />
 
             <Button
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
                 android:text="-"
+                android:textColor="@color/colorMinus"
                 android:id="@+id/minusBall"
                 android:minHeight="30dp"
                 android:layout_column="2"/>
@@ -206,6 +190,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
                 android:text="+"
+                android:textColor="@color/colorPlus"
                 android:id="@+id/plusStrike"
                 android:minHeight="30dp"
                 android:layout_column="1"
@@ -217,6 +202,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
                 android:text="-"
+                android:textColor="@color/colorMinus"
                 android:id="@+id/minusStrike"
                 android:minHeight="30dp"
                 android:layout_column="2"
@@ -242,6 +228,7 @@
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:text="+"
+                android:textColor="@color/colorPlus"
                 android:layout_marginLeft="25dp"
                 android:id="@+id/plusOut"
                 android:layout_width="100dp"
@@ -257,6 +244,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
                 android:text="-"
+                android:textColor="@color/colorMinus"
                 android:id="@+id/minusOut"
                 android:minHeight="30dp"
                 android:layout_column="2"
@@ -281,6 +269,7 @@
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:text="+"
+                android:textColor="@color/colorPlus"
                 android:layout_marginLeft="25dp"
                 android:id="@+id/plusInning"
                 android:layout_width="100dp"
@@ -294,6 +283,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/laces"
                 android:text="-"
+                android:textColor="@color/colorMinus"
                 android:id="@+id/minusInning"
                 android:minHeight="30dp"
                 android:layout_column="2" />
