@@ -6,4 +6,18 @@
         android:title="Logout"
         android:visible="true"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/weatherAction"
+        android:icon="@drawable/ic_cloud_queue_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="Check Weather">
+    </item>
+    <item
+        android:id="@+id/gameAction"
+        android:icon="@drawable/ic_sd_card_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="View Games">
+    </item>
+
+
 </menu>

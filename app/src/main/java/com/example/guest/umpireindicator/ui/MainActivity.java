@@ -1,16 +1,20 @@
 package com.example.guest.umpireindicator.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +23,7 @@ import com.example.guest.umpireindicator.R;
 import com.example.guest.umpireindicator.models.Game;
 import com.firebase.client.Firebase;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -50,11 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.minusAway) Button mMinusAway;
     @Bind(R.id.plusHome) Button mPlusHome;
     @Bind(R.id.minusHome) Button mMinusHome;
-    @Bind(R.id.weatherButton) Button mWeatherButton;
+//    @Bind(R.id.weatherButton) Button mWeatherButton;
     @Bind(R.id.newBatter) Button mNewBatter;
     @Bind(R.id.saveGameButton) Button mSaveGameButton;
-    @Bind(R.id.gameListButton) Button mGameListButton;
-    //    @Bind(R.id.coachButton) Button mCoachButton;
+//    @Bind(R.id.gameListButton) Button mGameListButton;
     private SharedPreferences mSharedPreferences;
     public String timeStamp;
     int ballCount=0;
@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int inningCount=1;
     int inningTBCount=1;
     int upDown =0;
+    String home ="Home";
+    String away = "Away";
 
     public void setCount(TextView balls, String type, int number ){
         balls.setText(type + number);
@@ -160,9 +162,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 //        mCoachButton.setOnClickListener(this);
-        mGameListButton.setOnClickListener(this);
+//        mGameListButton.setOnClickListener(this);
         mSaveGameButton.setOnClickListener(this);
-        mWeatherButton.setOnClickListener(this);
+//        mWeatherButton.setOnClickListener(this);
         mNewBatter.setOnClickListener(this);
         mPlusBall.setOnClickListener(this);
         mMinusBall.setOnClickListener(this);
@@ -176,12 +178,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMinusHome.setOnClickListener(this);
         mPlusAway.setOnClickListener(this);
         mMinusAway.setOnClickListener(this);
+        mHomeText.setOnClickListener(this);
+        mAwayText.setOnClickListener(this);
     }
 
     @Override
         public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_search, menu);
+        //add this to weather activity below
+//        inflater.inflate(R.menu.menu_search, menu);
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
@@ -189,12 +194,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_logout) {
-            logout();
-            return true;
+        switch (item.getItemId()) {
+            case R.id.weatherAction:
+                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(weatherIntent);
+                return true;
+            case R.id.action_logout:
+                logout();
+                return true;
+            case R.id.gameAction:
+                Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);
+                startActivity(listIntent);
         }
         return super.onOptionsItemSelected(item);
     }
+//    public void onComposeAction(MenuItem mi) {
+//        // handle click here
+//    }
 
     protected void logout(){
         mFirebaseRef.unauth();
@@ -224,27 +240,75 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            case R.id.coachButton:
 //                Intent intent = new Intent(MainActivity.this, CoachActivity.class);
 //                startActivity(intent);
+            case R.id.homeText:
+                LayoutInflater layoutInflaterAndroid = LayoutInflater.from(this);
+                View mView = layoutInflaterAndroid.inflate(R.layout.home_dialog, null);
+                AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(this);
+                alertDialogBuilderUserInput.setView(mView);
+                final EditText userInput = (EditText) mView.findViewById(R.id.homeInput);
+                alertDialogBuilderUserInput
+                        .setCancelable(false)
+                        .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogBox, int id) {
+                                home = userInput.getText().toString();
+                                Toast.makeText(MainActivity.this, "Updated home team for future saves", Toast.LENGTH_SHORT).show();
 
+                            }
+                        })
+
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        dialogBox.cancel();
+                                    }
+                                });
+
+                AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
+                alertDialogAndroid.show();
+                break;
+            case R.id.awayText:
+                LayoutInflater layoutInflaterAndroid2 = LayoutInflater.from(this);
+                View nView = layoutInflaterAndroid2.inflate(R.layout.away_dialog, null);
+                AlertDialog.Builder alertDialogBuilderUserInput2 = new AlertDialog.Builder(this);
+                alertDialogBuilderUserInput2.setView(nView);
+                final EditText userInput2 = (EditText) nView.findViewById(R.id.awayInput);
+                alertDialogBuilderUserInput2
+                        .setCancelable(false)
+                        .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogBox, int id) {
+                                away = userInput2.getText().toString();
+                                Toast.makeText(MainActivity.this, "Updated away team for future saves", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        dialogBox.cancel();
+                                    }
+                                });
+
+                AlertDialog alertDialogAndroid2 = alertDialogBuilderUserInput2.create();
+                alertDialogAndroid2.show();
             case R.id.saveGameButton:
                 timeStamp=getCurrentTimeStamp();
-
-                Game mGame = new Game(homeCount, awayCount, timeStamp);
-
+                Game mGame = new Game(home, away, inningTBCount, homeCount, awayCount, timeStamp);
                 String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
                 Firebase userGameFirebaseRef = new Firebase(Constants.FIREBASE_URL_GAMES).child(userUid);
                 Firebase pushRef = userGameFirebaseRef.push();
                 String gamePushId = pushRef.getKey();
+//                deny duplicates, by checking gamepushid, if matches, update
                 mGame.setPushId(gamePushId);
                 userGameFirebaseRef.push().setValue(mGame);
                 Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.gameListButton:
-                Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);
-                startActivity(listIntent);
-            case R.id.weatherButton:
-                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
-                startActivity(weatherIntent);
-            break;
+//            case R.id.gameListButton:
+//                Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);
+//                startActivity(listIntent);
+//            case R.id.weatherButton:
+//                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
+//                startActivity(weatherIntent);
+//            break;
             case R.id.plusBall:
                 if (ballCount <=3){
                     ballCount++;

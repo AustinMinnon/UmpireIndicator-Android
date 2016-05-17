@@ -21,6 +21,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder{
     @Bind(R.id.timeStamp) TextView mTimeStamp;
     @Bind(R.id.awayTeamScore) TextView mAwayText;
     @Bind(R.id.homeTeamScore) TextView mHomeText;
+    @Bind(R.id.inningText) TextView mInningText;
 
     private Context mContext;
     private ArrayList<Game> mGames = new ArrayList<>();
@@ -44,7 +45,9 @@ public class GameViewHolder extends RecyclerView.ViewHolder{
 
     public void bindGame(Game game){
         mTimeStamp.setText("Saved on : " + game.getTimeStamp());
-        mAwayText.setText("Away " + game.getAwayTeamScore());
-        mHomeText.setText("Home " + game.getHomeTeamScore());
+        mAwayText.setText(game.getAway()+" " + game.getAwayTeamScore());
+        mHomeText.setText(game.getHome()+" " + game.getHomeTeamScore());
+        mInningText.setText(game.getInningFormat());
     }
+
 }

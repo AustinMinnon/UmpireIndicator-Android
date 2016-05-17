@@ -28,6 +28,16 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="35dp"
         android:layout_marginEnd="35dp" />
+
+    <TextView
+        android:id="@+id/inningText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inning"
+        android:layout_below="@+id/homeTeamScore"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +48,7 @@
         android:textSize="15sp"
         android:id="@+id/timeStamp"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/homeTeamScore"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <ImageView
@@ -48,7 +58,7 @@
         android:src="@drawable/dividor"
         android:cropToPadding="false"
         android:scaleType="fitStart"
-        android:layout_alignTop="@+id/timeStamp"
+        android:layout_below="@+id/inningText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -31,12 +31,12 @@ public class MainActivityTest {
         TextView ballText = (TextView) activity.findViewById(R.id.ballText);
         assertTrue("Ball 0".equals(ballText.getText().toString()));
     }
-    @Test
-    public void secondActivityStarted() {
-        activity.findViewById(R.id.coachButton).performClick();
-        Intent expectedIntent = new Intent(activity, CoachActivity.class);
-        ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
-        Intent actualIntent = shadowActivity.getNextStartedActivity();
-        assertTrue(actualIntent.filterEquals(expectedIntent));
-    }
+//    @Test
+//    public void secondActivityStarted() {
+//        activity.findViewById(R.id.coachButton).performClick();
+//        Intent expectedIntent = new Intent(activity, CoachActivity.class);
+//        ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
+//        Intent actualIntent = shadowActivity.getNextStartedActivity();
+//        assertTrue(actualIntent.filterEquals(expectedIntent));
+//    }
 }
