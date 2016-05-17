@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public static String getCurrentTimeStamp(){
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm a");
             String currentTimeStamp = dateFormat.format(new Date());
             return currentTimeStamp;
         } catch (Exception e) {
@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                deny duplicates, by checking gamepushid, if matches, update
                 mGame.setPushId(gamePushId);
                 userGameFirebaseRef.push().setValue(mGame);
-                Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Saved game progress", Toast.LENGTH_SHORT).show();
                 break;
 //            case R.id.gameListButton:
 //                Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);

@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Home Team : 1"
-        android:textSize="40sp"
-        android:id="@+id/homeTeamScore"
-        android:layout_gravity="center_horizontal" />
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="15dp"
+        android:layout_marginTop="170dp"
         android:text="Away Team : 1"
         android:textSize="40sp"
-        android:id="@+id/awayTeamScore"
+        android:id="@+id/awayTeamScore" />
+
+    <TextView
+        android:id="@+id/inningText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Inning"
+        android:textSize="30sp"
         android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Team : 1"
+        android:textSize="40sp"
+        android:id="@+id/homeTeamScore" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,4 +40,5 @@
         android:textSize="15sp"
         android:id="@+id/timeStamp"
         android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

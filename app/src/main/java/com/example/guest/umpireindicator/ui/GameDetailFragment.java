@@ -20,7 +20,7 @@ public class GameDetailFragment extends Fragment {
     @Bind(R.id.awayTeamScore) TextView mAwayTeamTextView;
     @Bind(R.id.homeTeamScore) TextView mHomeTeamScore;
     @Bind(R.id.timeStamp) TextView mTimeStamp;
-
+    @Bind(R.id.inningText) TextView mInningText;
     private Game mGame;
 
     public static GameDetailFragment newInstance(Game game){
@@ -44,7 +44,9 @@ public class GameDetailFragment extends Fragment {
 
         mAwayTeamTextView.setText(mGame.getAway()+" " + mGame.getAwayTeamScore());
         mHomeTeamScore.setText(mGame.getHome()+" " + mGame.getHomeTeamScore());
-        mTimeStamp.setText(mGame.getTimeStamp());
+        mTimeStamp.setText("Saved on : " + mGame.getTimeStamp());
+        mInningText.setText(mGame.getInningFormat());
+
         return view;
     }
 }
