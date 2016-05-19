@@ -1,5 +1,6 @@
 package com.example.guest.umpireindicator.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -37,6 +38,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
     private Firebase mFirebaseRef;
+    ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mCreateUserButton.setOnClickListener(this);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mSharedPreferencesEditor = mSharedPreferences.edit();
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
@@ -90,6 +96,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         }
         return true;
     }
+
+
 
     public void createNewUser() {
         final String name = mNameEditText.getText().toString();
@@ -146,6 +154,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
+
     private void showErrorToast(String message) {
         Toast.makeText(CreateAccountActivity.this, message, Toast.LENGTH_LONG).show();
     }

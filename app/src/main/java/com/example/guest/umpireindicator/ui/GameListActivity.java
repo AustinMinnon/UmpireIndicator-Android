@@ -34,10 +34,8 @@ public class GameListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mFirebaseGameRef = new Firebase(Constants.FIREBASE_URL_GAMES);
-
         setUpFirebaseQuery();
         setUpRecyclerView();
-
     }
 
     private void setUpFirebaseQuery(){

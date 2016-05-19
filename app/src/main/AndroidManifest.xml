@@ -18,8 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.CoachActivity" />
-        <activity android:name=".ui.WeatherActivity" />
         <activity android:name=".ui.GameDetailActivity" />
         <activity android:name=".ui.WeatherListActivity">
             <meta-data

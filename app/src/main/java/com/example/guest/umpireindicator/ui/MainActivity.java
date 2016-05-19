@@ -7,7 +7,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,7 +31,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Firebase mFirebaseRef;
-
+    private SharedPreferences mSharedPreferences;
+    public String timeStamp;
     @Bind(R.id.ballText) TextView mBallText;
     @Bind(R.id.strikeText) TextView mStrikeText;
     @Bind(R.id.outText) TextView mOutText;
@@ -51,12 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.minusAway) Button mMinusAway;
     @Bind(R.id.plusHome) Button mPlusHome;
     @Bind(R.id.minusHome) Button mMinusHome;
-//    @Bind(R.id.weatherButton) Button mWeatherButton;
     @Bind(R.id.newBatter) Button mNewBatter;
     @Bind(R.id.saveGameButton) Button mSaveGameButton;
-//    @Bind(R.id.gameListButton) Button mGameListButton;
-    private SharedPreferences mSharedPreferences;
-    public String timeStamp;
+    String home ="Home";
+    String away = "Away";
     int ballCount=0;
     int strikeCount=0;
     int outCount=0;
@@ -65,92 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int inningCount=1;
     int inningTBCount=1;
     int upDown =0;
-    String home ="Home";
-    String away = "Away";
-
-    public void setCount(TextView balls, String type, int number ){
-        balls.setText(type + number);
-    }
-
-    public void resetCount(TextView mBallText, TextView mOutText, TextView mStrikeText) {
-        ballCount = 0;
-        strikeCount = 0;
-        outCount = 0;
-        setCount(mBallText, "Ball ", ballCount);
-        setCount(mStrikeText, "Strike ", strikeCount);
-        setCount(mOutText, "Out ", outCount);
-    }
-
-    public int checkInning(int inningTBCount){
-        if (inningTBCount %2 ==1){
-            upDown=1;
-        }else if (inningTBCount %2==0){
-            upDown=2;
-        }else if (inningTBCount %3==0){
-            upDown=3;
-        }
-        return upDown;
-
-    }
-
-    public void setCounts(){
-        setCount(mBallText, "Ball ", ballCount);
-        setCount(mStrikeText, "Strike ", strikeCount);
-        setCount(mOutText, "Out ", outCount);
-    }
-
-    public void checkCounts(){
-        if (strikeCount >=3 && outCount>=3) {
-            ballCount = 0;
-            strikeCount = 0;
-            outCount=0;
-            inningTBCount++;
-            checkInning(inningTBCount);
-
-            setCounts();
-        } else if (outCount >=3){
-            outCount=0;
-            strikeCount=0;
-            ballCount=0;
-            inningTBCount++;
-            checkInning(inningTBCount);
-                if (upDown==1){
-                    inningCount++;
-                    setCount(mInningText, "Inning ↑", inningCount);
-
-                }else if (upDown==2){
-                    setCount(mInningText, "Inning ↓", inningCount);
-                }
-            setCounts();
-        } else if (ballCount >=4){
-            ballCount=0;
-            strikeCount=0;
-            setCount(mBallText, "Ball ", ballCount);
-        } else if (strikeCount >=3){
-            strikeCount=0;
-            ballCount=0;
-            outCount++;
-            setCounts();
-
-            if (outCount>=3) {
-                ballCount = 0;
-                strikeCount = 0;
-                outCount=0;
-                inningTBCount++;
-                checkInning(inningTBCount);
-                    if (upDown==1){
-                        inningCount++;
-                        setCount(mInningText, "Inning ↑", inningCount);
-
-                    }else if (upDown==2){
-                        setCount(mInningText, "Inning ↓", inningCount);
-                }
-                setCounts();
-            }
-        }
-    }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,11 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-
-//        mCoachButton.setOnClickListener(this);
-//        mGameListButton.setOnClickListener(this);
         mSaveGameButton.setOnClickListener(this);
-//        mWeatherButton.setOnClickListener(this);
         mNewBatter.setOnClickListener(this);
         mPlusBall.setOnClickListener(this);
         mMinusBall.setOnClickListener(this);
@@ -185,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
         public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        //add this to weather activity below
-//        inflater.inflate(R.menu.menu_search, menu);
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
@@ -196,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.weatherAction:
-                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
+                Intent weatherIntent = new Intent(MainActivity.this, WeatherListActivity.class);
                 startActivity(weatherIntent);
                 return true;
             case R.id.action_logout:
@@ -208,38 +114,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
-//    public void onComposeAction(MenuItem mi) {
-//        // handle click here
-//    }
-
-    protected void logout(){
-        mFirebaseRef.unauth();
-        takeUserToLoginScreenOnUnAuth();
-    }
-
-    private void takeUserToLoginScreenOnUnAuth() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public static String getCurrentTimeStamp(){
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm a");
-            String currentTimeStamp = dateFormat.format(new Date());
-            return currentTimeStamp;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
+    //Click Listeners for action bar
         @Override
         public void onClick(View v){
         switch(v.getId()){
-//            case R.id.coachButton:
-//                Intent intent = new Intent(MainActivity.this, CoachActivity.class);
-//                startActivity(intent);
             case R.id.homeText:
                 LayoutInflater layoutInflaterAndroid = LayoutInflater.from(this);
                 View mView = layoutInflaterAndroid.inflate(R.layout.home_dialog, null);
@@ -247,21 +125,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 alertDialogBuilderUserInput.setView(mView);
                 final EditText userInput = (EditText) mView.findViewById(R.id.homeInput);
                 alertDialogBuilderUserInput
-                        .setCancelable(false)
-                        .setPositiveButton("Send", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialogBox, int id) {
-                                home = userInput.getText().toString();
-                                Toast.makeText(MainActivity.this, "Updated home team for future saves", Toast.LENGTH_SHORT).show();
-
-                            }
-                        })
-
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialogBox, int id) {
-                                        dialogBox.cancel();
-                                    }
-                                });
+                    .setCancelable(false)
+                    .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogBox, int id) {
+                            home = userInput.getText().toString();
+                            Toast.makeText(MainActivity.this, "Updated home team for future saves", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialogBox, int id) {
+                                    dialogBox.cancel();
+                                }
+                            });
 
                 AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
                 alertDialogAndroid.show();
@@ -273,23 +149,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 alertDialogBuilderUserInput2.setView(nView);
                 final EditText userInput2 = (EditText) nView.findViewById(R.id.awayInput);
                 alertDialogBuilderUserInput2
-                        .setCancelable(false)
-                        .setPositiveButton("Send", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialogBox, int id) {
-                                away = userInput2.getText().toString();
-                                Toast.makeText(MainActivity.this, "Updated away team for future saves", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialogBox, int id) {
-                                        dialogBox.cancel();
-                                    }
-                                });
-
+                    .setCancelable(false)
+                    .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogBox, int id) {
+                            away = userInput2.getText().toString();
+                            Toast.makeText(MainActivity.this, "Updated away team for future saves", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialogBox, int id) {
+                                    dialogBox.cancel();
+                                }
+                            });
                 AlertDialog alertDialogAndroid2 = alertDialogBuilderUserInput2.create();
                 alertDialogAndroid2.show();
+                break;
             case R.id.saveGameButton:
                 timeStamp=getCurrentTimeStamp();
                 Game mGame = new Game(home, away, inningTBCount, homeCount, awayCount, timeStamp);
@@ -297,25 +172,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Firebase userGameFirebaseRef = new Firebase(Constants.FIREBASE_URL_GAMES).child(userUid);
                 Firebase pushRef = userGameFirebaseRef.push();
                 String gamePushId = pushRef.getKey();
-//                deny duplicates, by checking gamepushid, if matches, update
                 mGame.setPushId(gamePushId);
                 userGameFirebaseRef.push().setValue(mGame);
                 Toast.makeText(this, "Saved game progress", Toast.LENGTH_SHORT).show();
                 break;
-//            case R.id.gameListButton:
-//                Intent listIntent = new Intent(MainActivity.this, GameListActivity.class);
-//                startActivity(listIntent);
-//            case R.id.weatherButton:
-//                Intent weatherIntent = new Intent(MainActivity.this, WeatherActivity.class);
-//                startActivity(weatherIntent);
-//            break;
+
+            //Click Listeners for game controls
             case R.id.plusBall:
                 if (ballCount <=3){
                     ballCount++;
                     setCount(mBallText, "Ball ", ballCount);
                     checkCounts();
                     setCounts();
-                }else {
                 }
             break;
             case R.id.minusBall:
@@ -413,7 +281,109 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             default:
                 break;
-
         }
+    }
+
+    //  Gameplay Functions
+
+    public void setCount(TextView balls, String type, int number ){
+        balls.setText(type + number);
+    }
+
+    public void resetCount(TextView mBallText, TextView mOutText, TextView mStrikeText) {
+        ballCount = 0;
+        strikeCount = 0;
+        outCount = 0;
+        setCount(mBallText, "Ball ", ballCount);
+        setCount(mStrikeText, "Strike ", strikeCount);
+        setCount(mOutText, "Out ", outCount);
+    }
+
+    public int checkInning(int inningTBCount){
+        if (inningTBCount %2 ==1){
+            upDown=1;
+        }else if (inningTBCount %2==0){
+            upDown=2;
+        }else if (inningTBCount %3==0){
+            upDown=3;
+        }
+        return upDown;
+    }
+
+    public void setCounts(){
+        setCount(mBallText, "Ball ", ballCount);
+        setCount(mStrikeText, "Strike ", strikeCount);
+        setCount(mOutText, "Out ", outCount);
+    }
+
+    public void checkCounts(){
+        if (strikeCount >=3 && outCount>=3) {
+            ballCount = 0;
+            strikeCount = 0;
+            outCount=0;
+            inningTBCount++;
+            checkInning(inningTBCount);
+            setCounts();
+        } else if (outCount >=3){
+            outCount=0;
+            strikeCount=0;
+            ballCount=0;
+            inningTBCount++;
+            checkInning(inningTBCount);
+            if (upDown==1){
+                inningCount++;
+                setCount(mInningText, "Inning ↑", inningCount);
+            }else if (upDown==2){
+                setCount(mInningText, "Inning ↓", inningCount);
+            }
+            setCounts();
+        } else if (ballCount >=4){
+            ballCount=0;
+            strikeCount=0;
+            setCount(mBallText, "Ball ", ballCount);
+        } else if (strikeCount >=3){
+            strikeCount=0;
+            ballCount=0;
+            outCount++;
+            setCounts();
+            if (outCount>=3) {
+                ballCount = 0;
+                strikeCount = 0;
+                outCount=0;
+                inningTBCount++;
+                checkInning(inningTBCount);
+                if (upDown==1){
+                    inningCount++;
+                    setCount(mInningText, "Inning ↑", inningCount);
+                }else if (upDown==2){
+                    setCount(mInningText, "Inning ↓", inningCount);
+                }
+                setCounts();
+            }
+        }
+    }
+
+    public static String getCurrentTimeStamp(){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm a");
+            String currentTimeStamp = dateFormat.format(new Date());
+            return currentTimeStamp;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Authorization Functions
+    protected void logout(){
+        mFirebaseRef.unauth();
+        takeUserToLoginScreenOnUnAuth();
+    }
+
+    private void takeUserToLoginScreenOnUnAuth() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

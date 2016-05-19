@@ -69,7 +69,6 @@ public class WeatherListActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 addToSharedPreferences(query);
-                Log.d("query", query);
                 fetchWeather(query);
                 return false;
             }
