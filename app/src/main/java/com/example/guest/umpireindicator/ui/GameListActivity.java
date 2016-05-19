@@ -25,8 +25,6 @@ public class GameListActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

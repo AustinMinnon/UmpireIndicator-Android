@@ -76,7 +76,5 @@
             android:gravity="center"
             android:textStyle="bold" />
 
-
     </LinearLayout>
-
 </LinearLayout>
