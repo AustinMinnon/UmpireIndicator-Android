@@ -30,7 +30,7 @@ public class WeatherService {    public static void fetchWeather(String location
             .build();
 
     HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.baseUrl).newBuilder();
-    urlBuilder.addQueryParameter(Constants.locationParam, location);
+    urlBuilder.addQueryParameter(Constants.zipParam, location);
     urlBuilder.addQueryParameter("appid", Constants.apiKey);
     String url = urlBuilder.build().toString();
     Log.d(TAG, url);
@@ -61,10 +61,11 @@ public class WeatherService {    public static void fetchWeather(String location
                 String tempMin = dayJSON.getJSONObject("temp").getString("min");
                 String main = dayJSON.getJSONArray("weather").getJSONObject(0).getString("main");
                 String icon = dayJSON.getJSONArray("weather").getJSONObject(0).getString("icon");
-                Log.d(TAG, "" + icon);
                 String description = dayJSON.getJSONArray("weather").getJSONObject(0).getString("description");
                 Weather weather = new Weather(city, country, tempMax, tempMin, main, description, day, icon);
-                        weathers.add(weather);
+                Log.d(TAG, "" + icon);
+                Log.d(TAG, "" + description);
+                weathers.add(weather);
             }
         }
     } catch (IOException e) {

@@ -18,6 +18,7 @@ public class Weather {
     String mDescription;
     String mDay;
     String mIconId;
+    int iconId = R.drawable.a50;
 
     public Weather(String city, String country, String tempMax, String tempMin, String main, String description, String day, String iconId){
         this.mCity = city;
@@ -64,36 +65,34 @@ public class Weather {
     }
 
     public int getIconPicture(){
-        int iconId = R.drawable.a10d;
         if (mIconId.equals("01d") || mIconId.equals("01n")){
-            iconId = R.drawable.a10d;
+            iconId = R.drawable.a01;
         }else if (mIconId.equals("02d") || mIconId.equals("02n")) {
-            iconId = R.drawable.a02d;
+            iconId = R.drawable.a02;
         }
         else if (mIconId.equals("03d") || mIconId.equals("03n")) {
-            iconId = R.drawable.a03d;
+            iconId = R.drawable.a03;
         }
         else if (mIconId.equals("04d") || mIconId.equals("04n")) {
-            iconId = R.drawable.a04d;
+            iconId = R.drawable.a04;
         }
         else if (mIconId.equals("09d") || mIconId.equals("09n")) {
-            iconId = R.drawable.a09d;
+            iconId = R.drawable.a09;
         }
-        else if (mIconId.equals("a10d") || mIconId.equals("a10n")) {
-            iconId = R.drawable.a10d;
+        else if (mIconId.equals("10d") || mIconId.equals("10n")) {
+            iconId = R.drawable.a10;
         }
         else if (mIconId.equals("11d") || mIconId.equals("11n")) {
-            iconId = R.drawable.a11d;
+            iconId = R.drawable.a11;
         }
         else if (mIconId.equals("13d") || mIconId.equals("13n")) {
-            iconId = R.drawable.a13d;
+            iconId = R.drawable.a13;
         }
         else if (mIconId.equals("50d") || mIconId.equals("50n")) {
-            iconId = R.drawable.a50n;
+            iconId = R.drawable.a50;
         }
         return iconId;
     }
-
 
     public Weather() {
 

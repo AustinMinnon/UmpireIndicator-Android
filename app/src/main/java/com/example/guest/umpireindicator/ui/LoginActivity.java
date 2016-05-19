@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
     }
+
     public void loginWithPassword() {
         final String email = mEmailEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();

@@ -13,8 +13,6 @@
         android:padding="10dp"
         android:weightSum="1">
 
-
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"

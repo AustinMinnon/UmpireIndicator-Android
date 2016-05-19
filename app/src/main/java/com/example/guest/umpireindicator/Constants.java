@@ -5,6 +5,7 @@ public class Constants {
     public static final String baseUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?units=imperial&cnt=7&";
     public static final String locationParam = "q";
     public static final String PREFERENCES_LOCATION_KEY = "location";
+    public static final String zipParam = "zip";
     public static final String FIREBASE_URL = BuildConfig.FIREBASE_ROOT_URL;
     public static final String FIREBASE_LOCATION_USERS = "users";
     public static final String FIREBASE_PROPERTY_EMAIL = "email";
