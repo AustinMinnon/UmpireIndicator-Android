@@ -30,26 +30,9 @@ public class WeatherDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather_detail);
         ButterKnife.bind(this);
         mWeathers = Parcels.unwrap(getIntent().getParcelableExtra("weathers"));
-        checkDay();
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
         adapterViewPager = new WeatherPagerAdapter(getSupportFragmentManager(), mWeathers);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
-    }
-
-    private void checkDay(){
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-        Log.d(TAG, "" + day);
-//        switch (day) {
-//            case Calendar.SUNDAY:
-//                // Current day is Sunday
-//
-//            case Calendar.MONDAY:
-//                // Current day is Monday
-//
-//            case Calendar.TUESDAY:
-//                // etc.
-//        }
     }
 }

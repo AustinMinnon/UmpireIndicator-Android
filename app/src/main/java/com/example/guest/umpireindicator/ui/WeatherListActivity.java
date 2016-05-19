@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import com.example.guest.umpireindicator.services.WeatherService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -90,6 +92,7 @@ public class WeatherListActivity extends AppCompatActivity {
 
     private void fetchWeather(String location){
         final WeatherService weatherService = new WeatherService();
+        final int itemPosition = getDay();
 
         WeatherService.fetchWeather(location, new Callback() {
         @Override
@@ -100,7 +103,6 @@ public class WeatherListActivity extends AppCompatActivity {
         @Override
             public void onResponse(Call call, Response response) {
             mWeathers = weatherService.processResults(response);
-
                         WeatherListActivity.this.runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
@@ -108,11 +110,15 @@ public class WeatherListActivity extends AppCompatActivity {
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-
+                        mRecyclerView.scrollToPosition(itemPosition);
                     }
                 });
             }
         });
+    }
+    public int getDay(){
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        return day-1;
     }
 }
