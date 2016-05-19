@@ -5,6 +5,8 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:background="#ffffff"
@@ -12,6 +14,17 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:weightSum="1">
+
+        <TextView
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dayTextView"
+            android:textSize="20dp"
+            android:text="Sunday"
+            android:layout_gravity="center_horizontal" />
 
         <ImageView
             android:layout_width="50dp"
@@ -24,6 +37,7 @@
 
         <TextView
             android:paddingTop="10dp"
+            android:paddingBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/locationTextView"
@@ -32,15 +46,18 @@
             android:textStyle="bold" />
 
         <TextView
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dayTextView"
-            android:textSize="20dp"
-            android:text="Sunday" />
+            android:text="Today is clear with a chance of sunshine"
+            android:id="@+id/descriptionTextView"
+            android:textStyle="bold|italic"
+            android:textSize="15dp" />
 
         <TextView
             android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lowTextView"
@@ -50,7 +67,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/highTextView"
@@ -58,15 +75,6 @@
             android:textSize="17dp"
             android:gravity="center"
             android:textStyle="bold" />
-
-        <TextView
-            android:paddingTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Today is clear with a chance of sunshine"
-            android:id="@+id/descriptionTextView"
-            android:textStyle="bold|italic"
-            android:textSize="15dp" />
 
 
     </LinearLayout>
