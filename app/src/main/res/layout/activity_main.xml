@@ -34,6 +34,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:paddingTop="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -41,41 +42,54 @@
         android:layout_below="@+id/scoreCol">
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/laces"
+            android:layout_marginLeft="15dp"
             android:text="+"
+            android:textSize="50sp"
+            android:textStyle="bold"
             android:textColor="@color/colorPlus"
             android:id="@+id/plusHome"
-            android:layout_column="1" />
+            android:layout_weight="1"/>
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/laces"
+            android:layout_marginLeft="15dp"
             android:text="-"
+            android:textSize="50sp"
+            android:textStyle="bold"
             android:textColor="@color/colorMinus"
             android:id="@+id/minusHome"
-            android:layout_column="1" />
+            android:layout_weight="1" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/laces"
+            android:layout_marginLeft="15dp"
             android:text="+"
+            android:textSize="50sp"
+            android:textStyle="bold"
             android:textColor="@color/colorPlus"
             android:id="@+id/plusAway"
-            android:layout_column="1" />
+            android:layout_weight="1" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textColor="@color/colorMinus"
-            android:id="@+id/minusAway"
-            android:layout_column="1" />
+            android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/laces"
+        android:layout_marginLeft="15dp"
+        android:text="-"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorMinus"
+        android:id="@+id/minusAway"
+        android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -83,13 +97,46 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/inningCol"
+        android:id="@+id/teamCol"
         android:layout_below="@+id/optionCol">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:text=""
+            android:id="@+id/homeAltText"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/background_light"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/awayAltText"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/background_light"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:id="@+id/inningCol"
+        android:layout_below="@+id/teamCol">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Inning 1↑"
             android:id="@+id/inningText"
@@ -122,13 +169,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/inningCol"
+        android:layout_below="@+id/outCol"
         android:id="@+id/linearLayout">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Ball 0"
             android:id="@+id/ballText"
@@ -163,17 +211,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/linearLayout"
-        android:id="@+id/linearLayout2">
+        android:id="@+id/strikeCol">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Strike 0"
             android:id="@+id/strikeText"
+            android:layout_marginLeft="15dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="@android:color/background_light"
             android:layout_weight="1"
+
+
+
+
             />
 
         <Button
@@ -205,17 +259,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/linearLayout2"
+        android:layout_below="@+id/inningCol"
         android:id="@+id/outCol">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Out 0"
             android:id="@+id/outText"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="@android:color/background_light"
             android:layout_weight="1"
             />
@@ -249,7 +305,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/outCol"
+        android:layout_below="@+id/strikeCol"
         android:id="@+id/extraCol">
 
         <Button
@@ -259,7 +315,7 @@
             android:text="Save Scores"
             android:textSize="14sp"
             android:id="@+id/saveGameButton"
-            android:layout_weight="0"/>
+            android:layout_weight="1"/>
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
@@ -267,7 +323,7 @@
             android:text="New Batter"
             android:textSize="15sp"
             android:id="@+id/newBatter"
-            android:layout_weight="0"/>
+            android:layout_weight="1"/>
 
     </LinearLayout>
 </RelativeLayout>

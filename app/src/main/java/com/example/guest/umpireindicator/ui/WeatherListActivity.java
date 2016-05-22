@@ -1,6 +1,8 @@
 package com.example.guest.umpireindicator.ui;
 
+import android.app.ActionBar;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
@@ -8,10 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.guest.umpireindicator.Constants;
 import com.example.guest.umpireindicator.R;
@@ -31,6 +33,7 @@ import okhttp3.Response;
 
 public class WeatherListActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.weatherHint) TextView mWeatherHint;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentLocation;
@@ -44,7 +47,9 @@ public class WeatherListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_list);
         ButterKnife.bind(this);
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Typeface scoreboard_font = Typeface.createFromAsset(getAssets(), "fonts/scoreboardFont2.ttf");
+        mWeatherHint.setTypeface(scoreboard_font);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentLocation = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
 

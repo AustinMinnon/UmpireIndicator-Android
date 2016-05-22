@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     public String timeStamp;
+    @Bind(R.id.awayAltText) TextView mAwayAltText;
+    @Bind(R.id.homeAltText) TextView mHomeAltText;
     @Bind(R.id.ballText) TextView mBallText;
     @Bind(R.id.strikeText) TextView mStrikeText;
     @Bind(R.id.outText) TextView mOutText;
@@ -97,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mStrikeText.setTypeface(scoreboard_font);
         mBallText.setTypeface(scoreboard_font);
         mOutText.setTypeface(scoreboard_font);
+        mAwayAltText.setTypeface(scoreboard_font);
+        mHomeAltText.setTypeface(scoreboard_font);
     }
 
     @Override
@@ -138,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setPositiveButton("Send", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialogBox, int id) {
                             home = userInput.getText().toString();
-                            Toast.makeText(MainActivity.this, "Updated home team for future saves", Toast.LENGTH_SHORT).show();
+                            mHomeAltText.setText("("+home+")");
                         }
                     })
                     .setNegativeButton("Cancel",
@@ -162,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setPositiveButton("Send", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialogBox, int id) {
                             away = userInput2.getText().toString();
-                            Toast.makeText(MainActivity.this, "Updated away team for future saves", Toast.LENGTH_SHORT).show();
+                            mAwayAltText.setText("("+away+")");
                         }
                     })
                     .setNegativeButton("Cancel",
