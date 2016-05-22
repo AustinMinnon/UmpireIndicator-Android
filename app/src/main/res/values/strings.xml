@@ -2,7 +2,12 @@
     <string name="app_name">UmpireIndicator</string>
     <string name="downarrow">&#x21e3;</string>
     <string name="uparrow">&#x21e1;</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="home">Home</string>
+    <string name="away">Away</string>
+    <string name="inning">Inning</string>
+    <string name="out">Out</string>
+    <string name="ball">Ball</string>
+    <string name="strike">Strike</string>
 </resources>

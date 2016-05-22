@@ -3,6 +3,7 @@ package com.example.guest.umpireindicator.ui;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Typeface scoreboard_font = Typeface.createFromAsset(getAssets(), "fonts/scoreboardFont2.ttf");
+
 
         mSaveGameButton.setOnClickListener(this);
         mNewBatter.setOnClickListener(this);
@@ -88,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMinusAway.setOnClickListener(this);
         mHomeText.setOnClickListener(this);
         mAwayText.setOnClickListener(this);
+        mHomeText.setTypeface(scoreboard_font);
+        mAwayText.setTypeface(scoreboard_font);
+        mInningText.setTypeface(scoreboard_font);
+        mStrikeText.setTypeface(scoreboard_font);
+        mBallText.setTypeface(scoreboard_font);
+        mOutText.setTypeface(scoreboard_font);
     }
 
     @Override
