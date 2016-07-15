@@ -6,7 +6,7 @@
 
 ## Description
 
-_Keep your head in the game with this app. Record: Balls, Strikes, and Outs in real time. With this app, all essential umpire responsibilities are recorded for reference at any time._
+_Keep your head in the baseball / softball game with this android app. Record: Balls, Strikes, Outs, Innings in real time. All essential umpire responsibilities are recorded for reference at any time. User profiles allow saving games for future reference. Stay ahead of the weather with a built in 7 day forcast retriever._
 
 ## Setup/Installation Requirements
 
