@@ -127,36 +127,41 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:id="@+id/inningCol"
         android:layout_below="@+id/teamCol">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="15dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Inning 1↑"
-            android:id="@+id/inningText"
-            android:textSize="20sp"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="1"/>
+
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:text="+"
             android:textColor="@color/colorPlus"
             android:id="@+id/plusInning"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:layout_weight="0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="Inning 1↑"
+            android:id="@+id/inningText"
+            android:textSize="25sp"
+            android:textColor="@android:color/background_light"
+            android:layout_weight="1"/>
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:text="-"
             android:textColor="@color/colorMinus"
@@ -168,6 +173,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:layout_below="@+id/outCol"
         android:id="@+id/linearLayout">
@@ -177,7 +184,6 @@
             android:layout_marginLeft="15dp"
             android:layout_height="fill_parent"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Ball 0"
             android:id="@+id/ballText"
             android:textSize="25sp"
@@ -189,19 +195,22 @@
             android:text="+"
             android:textColor="@color/colorPlus"
             android:id="@+id/plusBall"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:layout_weight="0" />
 
         <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:text="-"
             android:textColor="@color/colorMinus"
             android:id="@+id/minusBall"
-            android:minHeight="30dp"
             android:layout_weight="0"/>
 
 </LinearLayout>
@@ -209,6 +218,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:layout_below="@+id/linearLayout"
         android:id="@+id/strikeCol">
@@ -216,7 +227,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Strike 0"
             android:id="@+id/strikeText"
             android:layout_marginLeft="15dp"
@@ -232,25 +242,27 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:text="+"
             android:textColor="@color/colorPlus"
             android:id="@+id/plusStrike"
-            android:minHeight="30dp"
             android:layout_weight="0"
             />
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:text="-"
             android:textColor="@color/colorMinus"
             android:id="@+id/minusStrike"
-            android:minHeight="30dp"
             android:layout_weight="0"
             />
 
@@ -258,16 +270,30 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:layout_below="@+id/inningCol"
         android:id="@+id/outCol">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:text="+"
+            android:textColor="@color/colorPlus"
+            android:id="@+id/plusOut"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/laces"
+            android:layout_weight="0"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="15dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Out 0"
             android:id="@+id/outText"
             android:textSize="25sp"
@@ -278,25 +304,14 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:text="+"
-            android:textColor="@color/colorPlus"
-            android:id="@+id/plusOut"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/laces"
-            android:minHeight="30dp"
-            android:layout_weight="0"
-            />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/laces"
             android:text="-"
             android:textColor="@color/colorMinus"
             android:id="@+id/minusOut"
-            android:minHeight="30dp"
             android:layout_weight="0"
             />
 
