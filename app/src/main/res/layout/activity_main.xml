@@ -19,6 +19,8 @@
             android:id="@+id/homeText"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_gravity="center"
             android:textColor="@android:color/background_light"
             android:layout_weight="1" />
 
@@ -27,6 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Away 0"
             android:id="@+id/awayText"
+            android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@android:color/background_light"
@@ -35,61 +38,87 @@
 
     <LinearLayout
         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/optionCol"
-        android:layout_below="@+id/scoreCol">
+        android:layout_below="@+id/teamCol">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
 
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/laces"
-            android:layout_marginLeft="15dp"
+            android:layout_centerInParent="true"
             android:text="+"
-            android:textSize="50sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/colorPlus"
-            android:id="@+id/plusHome"
-            android:layout_weight="1"/>
+            android:id="@+id/plusHome" />
 
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/laces"
-            android:layout_marginLeft="15dp"
-            android:text="-"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorMinus"
-            android:id="@+id/minusHome"
-            android:layout_weight="1" />
+    </RelativeLayout>
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/laces"
-            android:layout_marginLeft="15dp"
-            android:text="+"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPlus"
-            android:id="@+id/plusAway"
-            android:layout_weight="1" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/laces"
-        android:layout_marginLeft="15dp"
-        android:text="-"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorMinus"
-        android:id="@+id/minusAway"
-        android:layout_weight="1"/>
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/laces"
+                android:text="-"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorMinus"
+                android:id="@+id/minusHome" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/laces"
+                android:text="+"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPlus"
+                android:layout_centerInParent="true"
+                android:id="@+id/plusAway" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/laces"
+                android:text="-"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorMinus"
+                android:id="@+id/minusAway"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -98,12 +127,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/teamCol"
-        android:layout_below="@+id/optionCol">
+        android:layout_below="@+id/scoreCol">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="Team sexy"
+            android:textAlignment="center"
             android:id="@+id/homeAltText"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -113,9 +143,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="julians"
+            android:textAlignment="center"
             android:id="@+id/awayAltText"
-            android:gravity="center_horizontal"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@android:color/background_light"
@@ -123,16 +153,24 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inningLayout"
+        android:layout_below="@+id/optionCol">
+
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal"
         android:id="@+id/inningCol"
-        android:layout_below="@+id/teamCol">
-
+        android:layout_below="@+id/optionCol">
 
 
         <Button
@@ -146,14 +184,14 @@
             android:layout_height="70dp"
             android:background="@drawable/laces"
             android:layout_weight="0" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="15dp"
             android:gravity="center"
             android:text="Inning 1↑"
             android:id="@+id/inningText"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:textColor="@android:color/background_light"
             android:layout_weight="1"/>
         <Button
@@ -173,22 +211,11 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal"
         android:layout_below="@+id/outCol"
         android:id="@+id/linearLayout">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="Ball 0"
-            android:id="@+id/ballText"
-            android:textSize="25sp"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="1" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -201,6 +228,16 @@
             android:layout_height="70dp"
             android:background="@drawable/laces"
             android:layout_weight="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="Ball 0"
+            android:id="@+id/ballText"
+            android:textSize="20sp"
+            android:textColor="@android:color/background_light"
+            android:layout_weight="1" />
 
         <Button
             android:textSize="30sp"
@@ -218,27 +255,11 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal"
         android:layout_below="@+id/linearLayout"
         android:id="@+id/strikeCol">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="Strike 0"
-            android:id="@+id/strikeText"
-            android:layout_marginLeft="15dp"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="1"
-
-
-
-
-            />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -251,6 +272,17 @@
             android:textColor="@color/colorPlus"
             android:id="@+id/plusStrike"
             android:layout_weight="0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="Strike 0"
+            android:id="@+id/strikeText"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@android:color/background_light"
+            android:layout_weight="1"
             />
 
         <Button
@@ -270,8 +302,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal"
         android:layout_below="@+id/inningCol"
         android:id="@+id/outCol">
@@ -293,10 +325,9 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="15dp"
             android:text="Out 0"
             android:id="@+id/outText"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:textColor="@android:color/background_light"
             android:layout_weight="1"
@@ -320,21 +351,27 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/strikeCol"
-        android:id="@+id/extraCol">
+        android:id="@+id/extraCol"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="66dp"
+            android:layout_margin="5dp"
             android:text="Save Scores"
+            android:background="@drawable/woodenbutton"
             android:textSize="14sp"
             android:id="@+id/saveGameButton"
             android:layout_weight="1"/>
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="66dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/woodenbutton"
             android:text="New Batter"
             android:textSize="15sp"
             android:id="@+id/newBatter"
