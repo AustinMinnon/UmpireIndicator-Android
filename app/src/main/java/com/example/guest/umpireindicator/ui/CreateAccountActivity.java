@@ -47,6 +47,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mCreateUserButton.setOnClickListener(this);
+        mLoginTextView.setOnClickListener(this);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mSharedPreferencesEditor = mSharedPreferences.edit();
         mAuthProgressDialog = new ProgressDialog(this);
@@ -59,6 +60,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view){
         if (view == mCreateUserButton){
             createNewUser();
+        } else if (view == mLoginTextView){
+            Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
     }
 

@@ -45,8 +45,8 @@ public class GameViewHolder extends RecyclerView.ViewHolder{
 
     public void bindGame(Game game){
         mTimeStamp.setText("Saved on : " + game.getTimeStamp());
-        mAwayText.setText(game.getAway()+" " + game.getAwayTeamScore());
-        mHomeText.setText(game.getHome()+" " + game.getHomeTeamScore());
+        mAwayText.setText(game.getAway().toUpperCase()+" " + game.getAwayTeamScore());
+        mHomeText.setText(game.getHome().toUpperCase()+" " + game.getHomeTeamScore());
         mInningText.setText(game.getInningFormat());
     }
 

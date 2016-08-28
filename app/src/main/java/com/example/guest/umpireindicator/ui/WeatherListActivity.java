@@ -33,7 +33,6 @@ import okhttp3.Response;
 
 public class WeatherListActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    @Bind(R.id.weatherHint) TextView mWeatherHint;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentLocation;
@@ -49,7 +48,6 @@ public class WeatherListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         Typeface scoreboard_font = Typeface.createFromAsset(getAssets(), "fonts/scoreboardFont2.ttf");
-        mWeatherHint.setTypeface(scoreboard_font);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentLocation = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
 

@@ -9,4 +9,5 @@
     <color name="colorTextIcons">#81C784</color>
     <color name="colorPlus">#00E676</color>
     <color name="colorMinus">#FF1744</color>
+    <color name="colorTint">#787878</color>
 </resources>

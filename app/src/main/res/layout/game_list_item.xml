@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home 1"
+        android:textColor="#fff"
         android:textSize="25sp"
         android:paddingTop="5dp"
         android:id="@+id/homeTeamScore"
@@ -24,6 +25,7 @@
         android:paddingTop="5dp"
         android:text="Away 1"
         android:textSize="25sp"
+        android:textColor="#fff"
         android:id="@+id/awayTeamScore"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -36,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inning"
+        android:textColor="#fff"
         android:layout_below="@+id/homeTeamScore"
         android:layout_centerHorizontal="true"
         android:textSize="20sp" />
@@ -46,6 +49,7 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:text="saved on: 2016-05-13 11:04:36"
+        android:textColor="#fff"
         android:textStyle="italic"
         android:textSize="15sp"
         android:id="@+id/timeStamp"
@@ -64,13 +68,4 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="x"
-        android:id="@+id/deleteGame"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_alignRight="@+id/awayTeamScore"
-        android:layout_alignEnd="@+id/awayTeamScore" />
 </RelativeLayout>

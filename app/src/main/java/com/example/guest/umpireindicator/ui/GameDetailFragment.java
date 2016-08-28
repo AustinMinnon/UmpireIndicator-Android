@@ -42,8 +42,8 @@ public class GameDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_game_detail, container, false);
         ButterKnife.bind(this, view);
 
-        mAwayTeamTextView.setText(mGame.getAway()+" " + mGame.getAwayTeamScore());
-        mHomeTeamScore.setText(mGame.getHome()+" " + mGame.getHomeTeamScore());
+        mAwayTeamTextView.setText(mGame.getAway().toUpperCase()+" " + mGame.getAwayTeamScore());
+        mHomeTeamScore.setText(mGame.getHome().toUpperCase()+" " + mGame.getHomeTeamScore());
         mTimeStamp.setText("Saved on : " + mGame.getTimeStamp());
         mInningText.setText(mGame.getInningFormat());
 
