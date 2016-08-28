@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:paddingTop="10dp"
+        android:paddingTop="15dp"
         android:paddingBottom="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Team sexy"
+            android:text=""
             android:textAlignment="center"
             android:id="@+id/homeAltText"
             android:textSize="18sp"
@@ -143,7 +143,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="julians"
+            android:text=""
             android:textAlignment="center"
             android:id="@+id/awayAltText"
             android:textSize="18sp"
@@ -166,6 +166,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:orientation="horizontal"
@@ -191,7 +192,7 @@
             android:gravity="center"
             android:text="Inning 1↑"
             android:id="@+id/inningText"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textColor="@android:color/background_light"
             android:layout_weight="1"/>
         <Button

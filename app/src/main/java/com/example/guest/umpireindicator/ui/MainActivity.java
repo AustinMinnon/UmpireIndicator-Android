@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             break;
             case R.id.newBatter:
-                resetCount(mBallText, mOutText, mStrikeText);
+                resetCount(mBallText, mStrikeText);
             break;
             case R.id.plusInning:
                 inningTBCount++;
@@ -303,13 +303,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         balls.setText(type + number);
     }
 
-    public void resetCount(TextView mBallText, TextView mOutText, TextView mStrikeText) {
+    public void resetCount(TextView mBallText, TextView mStrikeText) {
         ballCount = 0;
         strikeCount = 0;
-        outCount = 0;
         setCount(mBallText, "Ball ", ballCount);
         setCount(mStrikeText, "Strike ", strikeCount);
-        setCount(mOutText, "Out ", outCount);
     }
 
     public int checkInning(int inningTBCount){
